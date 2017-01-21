@@ -16,26 +16,39 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introduction
 
 Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to digitalize printed and hand written materials.
+During the last years there have been multiple very important and large digitalization projects, run both by academic institutions and libraries, often in cooperation.
+This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in a way which have never before been possible.
+Since many projects have produced millions of scanned pages, the principal question is how we can use this data.
+Most of the time the first step is to find some solutions to perform OCR on the text.
 Within INEL project we have done a wide ranging evaluation of different tools currently available, and despite our satisfactory results one must also acknowledge the existence of several alarming bottlenecks, insuitable technical combinations and dead ends within the existing workflows.
 
 Moreover, it must be recognized that mere OCR of the text is often not enough in order to provide materials ready for linguistic analysis, but further restructuring is necessary.
+Often it adds value to automatically extract more information than just the text, as many documents contain systematically information about the author, location and time, among many other metadata variables.
+Information about the position and layout for characters, lines and words on pages is also among such data.
+The need for this is of course entirely different depending from the text type, since it is entirely possible to represent a book as a linear text paragraphs, which is not possible for newspaper texts which are divided into more complex layout elements.
+As a more technical note, also the recognition confidence for individual characters could be very useful for further post processing.
+This naturally grows importance with languages which have less mature OCR environment.
+As a last introductory comment, it must be emphasized that OCR is one of the few computational tasks where manual post-correction is still necessary in the majority of cases.
 In this paper different problems are identified, and as far as possible, alternatives are offered and escape routes envisioned.
 
 Although computational linguistics often rely on command line tools, there are some tasks which are particularly unsuitable to be done in terminal.
-One of these is post-processing of OCR result.
-Indeed, this task in almost all cases demands visual comparison between the recognized text and the original image.
+As mentioned, one of these is post-processing of OCR result.
+This task in almost all cases demands visual comparison between the recognized text and the original image.
 There are plenty of different tools which offer possibility to manually correct OCR'd text, and virtually all of them have very similar user interfaces.
 The page image is on the left, and the text field on the right, and moving cursor around the text field has some kind of correspondence on top of the image.
-From this point of view it is necessary to recognize character or word location on the page as essential part of the OCR result, since it is impossible to imagine a post-correction workflow which would function without this information, albeit there are cases where page position information can also be considered as unnecessary to bring into later annotation phases.
+This makes one wonder why so many projects have ended up to the solution to develope new tools for post-correction.
+From this point of view it is also necessary to recognize character or word location on the page as essential part of the OCR result, since it is impossible to imagine a post-correction workflow which would function without this information, albeit there are cases where page position information can also be considered as unnecessary to bring into later annotation phases.
 
 Compared to this, the initial training of an OCR model is very well suited to command line environment, especially for the transparency and reproducibility of the training process.
 
+## What is desired
 
 Following attributes would ideally be present in the output format:
 
 - Recognized word
 - Coordinates on page
 - Recognition confidence
+- Some style information
 - Information about used OCR system
     - Version
     - System settings
