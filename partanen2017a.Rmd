@@ -7,6 +7,7 @@ output:
     highlight: tango
     latex_engine: xelatex
     toc: yes
+bibliography: ~/FRibliography/bibtex/FRibliography.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -112,6 +113,8 @@ Abbyy model training is a black box from which something quite good usually come
 I have often encountered the thought that the page position information would not be needed.
 However, there are several situations where this information is very critical.
 For example, different page elements such as page numbers are very easy to recognize from the layout when their position is known, but tend to get very messily mixed with rest of the content when the position information is lost.
+The same goes with paragraph information, since **a paragraph** is basically a structure in text which is closely related to the organization of line indent, which, when known, makes paragraph detection rather reliable.
+Detecting it from unstructured lines is, on the other hand, rather hopeless.
 
 It can be argued that there are special cases where this information can be disregarded.
 For example, when working with texts like Bible or Koran the original verse structure is usually enough to distinguish different elements, and in many instances the sameness of the text in each version is very highly enforced.
@@ -196,4 +199,16 @@ It is still unknown how this data can exactly be used, but as far as I see there
 
 # Closing words
 
-The usability of different workflows related to OCR and reuse of the materials is closely connected to copyright. As discussed, there 
+The usability of different workflows related to OCR and reuse of the materials is closely connected to copyright.
+From my perspective the best and clearest solution is done in Fenno-Ugrica collection, where everything is in Public Domain.
+This means that the data can be used in any possible way we can or will be able to imagine.
+Naturally the existence of data in public domain is often related to the age of the data.
+This is why many large text corpora exist now for pre-1920's data, and as the years go by this year will gradually keep advancing.
+That said, it creates a situation where almost none of the presenters in this conference will live to see the currently published texts to enter Public Domain.
+There are exceptions such as the texts released into Public Domain by Ivan Belykh.
+Recently the main author of this article also compiled that text into an R package which makes it easily available.
+Conversations have also been ongoing to add it into interfaces such as Korp.
+
+It is easy to talk about the differences in the data different projects deal with and produce, but there is a lot that is essentially same in all OCR workflows.
+These similarities mean that most of the practices and solutions which work in one place will also work elsewhere.
+There is some kind of a boundary in 
