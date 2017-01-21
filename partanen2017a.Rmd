@@ -1,5 +1,5 @@
 ---
-title: "Challenges OCR today: INEL experiences"
+title: "Challenges in OCR today: INEL experiences"
 author: "Niko Partanen"
 date: "31 January 2017"
 output: 
@@ -7,7 +7,7 @@ output:
     highlight: tango
     latex_engine: xelatex
     toc: yes
-bibliography: ~/FRibliography/bibtex/FRibliography.bib
+bibliography: bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -21,7 +21,10 @@ During the last years there have been multiple very important and large digitali
 This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in a way which have never before been possible.
 Since many projects have produced millions of scanned pages, the principal question is how we can use this data.
 Most of the time the first step is to find some solutions to perform OCR on the text.
-Within INEL project we have done a wide ranging evaluation of different tools currently available, and despite our satisfactory results one must also acknowledge the existence of several alarming bottlenecks, insuitable technical combinations and dead ends within the existing workflows.
+To take this further, there are several tasks which have to be undertaken before the data is actually ready to be used by general audience or researchers.
+It seems to me that many of these tasks have not been commonly discussed, which is why I want to present some of my thoughts on the topic in this paper.
+Although not strictly speaking new research, this paper aims to introduce several concepts into discussion when the OCR tools are evaluated and chosen.
+Within INEL project [@wagner-nagyEtAl2015a] we have done a wide ranging evaluation of different tools currently available, and despite our satisfactory results one must also acknowledge the existence of several alarming bottlenecks, insuitable technical combinations and dead ends within the existing workflows.
 
 Moreover, it must be recognized that mere OCR of the text is often not enough in order to provide materials ready for linguistic analysis, but further restructuring is necessary.
 Often it adds value to automatically extract more information than just the text, as many documents contain systematically information about the author, location and time, among many other metadata variables.
@@ -62,6 +65,7 @@ Following attributes would ideally be present in the output format:
     - Version
     - System settings
     - Model used (with version, ideally commit hash from version control)
+    - Information about page processing, if that was performed
 
 The format itself is naturally trivial, but some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
 However, often offered formats such as plain text files are clearly not satisfactory.
@@ -107,7 +111,6 @@ Tesseract model training is based to the idea that an example images are generat
 
 Abbyy model training is a black box from which something quite good usually comes out.
 
-
 # Digitalization of the text or the book
 
 I have often encountered the thought that the page position information would not be needed.
@@ -124,9 +127,73 @@ In this sense OCR is ultimately just an attempt to claim that on these pixels, o
 Especially with old typefaces or handwritten manuscripts the matter of interpretation tends to become more significant.
 In the Skolt Saami and Dolgan texts I compare here this was not the issue.
 
+## Scanning
+
+Ideally the scanning is done with a high quality scanner, but there is some evidence that using pages above specific resolution will not increase the quality any further.
+Possible an ideal solution would be to scan in high quality TIFF or RAW format, but derive from those lower quality working copies.
+This approach would demand that all subsequently used software is able to track information about what was done a specific file, for example, whether it was cropped or cut somehow, as usually is the case.
+On the other hand, I have listed this above as one of the very basic requirements.
+
+Some variation in the scanning quality could be dictated by the uniqueness of the data.
+If one is digitalizing a book which exists in thousands of copies in different libraries, it may not be necessary to overdo this phase.
+However, when we are digitalizing fieldnotes or manuscripts, special attention has to be paid since these are often unique copies.
+
+## Postprocessing of images
+
+It is usually necessary to split the scanned images into pages.
+Some software, such as Abbyy, does this automatically as part of the OCR procedure, but many Open Source software does not do anything with the image.
+In addition of cutting the pages, it may be necessary to change contract and do some additional despeckling, which means removal of dust dots and similar artifacts.
+This is all just image editing basically and can be done in many ways.
+Personally I have used ScanTailor with good success.
+However, maybe the ideal solution is to always scan complete pages or very exactly adjusted spreads, if possible, so there is no or little need for post processing which is always one more source of errors.
+
+## Recognizing the text areas
+
+More closely related to OCR, it is also necessary to split the page into areas which contain text.
+The lack of this functionality is one of the most serious drawbacks in using Tesseract with newspaper data at the moment.
+
+This is also one of the work phases which would most benefit from graphical user interface of some sort, since adjusting the automatically recognized areas is very easy for a human if it is possible to see the areas and text on the page.
+
+## Running OCR
+
+The OCR itself can be performed without any human supervision.
+
+## Post-correctin of the texts
+
+There are some experiences that the OCR resulting text can be corrected to some degree with simple automatic scripts [@arkhangelskiyEtAl2016a].
+This is certainly true.
+I would still be cautious about not having the need for manual post-correction, which although impractical for millions of titles, can still be relatively cost-effective for hundreds or thousands of proofread books in a year.
+Needless to say, already this can produce a very large corpus, as the example of our colleagues in Syktyvkar shows.
+
+## Publishing
+
+There are lots of good alternatives for publishing of the OCR'd text.
+One of them is simply rendering the text as plain HTML.
+For a normally structured book this already makes the reading experience very enjoyable.
+On the other hand if it is possible to render the text into HTML, it is also possible to produce other formats such as EPUB which are very good to read on mobile devices.
+
+There are also some types of documents which would benefit from more complex rendering online.
+Especially this is the case with different manuscripts where even the reading of different characters may be debatable.
+Although I don't discuss the text recognition of hand-written documents here in depht, it should be pointed out that this is the type of document where some new facsimilé type of online publishing options would be the most needed.
+For example, the manuscripts of M.A. Castrén have recently been edited in ISO-TEI facsimilé in Helsinki, and the data of many other reseachers is still unprocessed in the libraries and museums, among those also researchers of Komi such as Sjögren and Sirelius.
+I'm certain also wider audience would appreciate the possibility to examine these materials easily online.
+What I would like to see the most is a set of tools which allow very easy and shallow rendering of XML and middle quality images, instead of building the solution on top of heavy servers and byzantine architectures which demand complex customization to fit the needs of specific projects.
+As I've discussed here, those needs may in reality be more similar than we think.
+The XML files could be even stored in public repositories such as GitHub, which would bring the work more towards actually open and collaborative science.
+
 # Ideal scenario
 
-We can compare...
+In an ideal world the OCR model development could be done with Open Source tools for languages which have the following resources:
+
+- Large corpus available with a permissive license
+- A good collection of fonts which match closely the ones used in publications
+- Frequency lists from possibly even a larger corpus
+- Consistent spelling which doesn't vary across publications
+
+It is noteworthy that for the large languages such as English or Finnish all these resources and conditions exist.
+However, for many of the smaller languages these form a large issue.
+Thereby it is also advisable not to publish corpora with licenses which contain clauses such as No-Derivations, since an OCR model is a derivation of one sort.
+Although it may be largely untested what exactly constitutes as a derivation, I would not start to use such a corpora in this kind of work.
 
 ## Web based solutions
 
@@ -170,7 +237,10 @@ It is highly likely that the same individuals have been writing to local newspap
 Or they have ended up to be recorded by different linguists of ethnographers, resulting in archive items which can be relatively easily associated with each other.
 Similarly in case the writers have deceased it can be expected that many communities recognize and remember them.
 
-One also has to take into account that as the number of available resources grow, it is often not realistic that the research is conducted with one specific corpus, but there are possibilities 
+One also has to take into account that as the number of available resources grow, it is often not realistic that the research is conducted with one specific corpus, but there are many possibilities nowadays to compile a new dataset from many different corpora.
+When the data is archived with proper metadata it should even be possible to harvest metadata from distinct sources and select carefully those recordings and transcriptions which contain specific criteria there are for research question at hand.
+What I try to explain is that even when the corpus would contain a large number of texts which someone would not find interesting or relevant, nobody is forced to use the complete corpus.
+Thereby building besides the corpus a large collection of OCR documents in different quality does no harm, but is one more asset that can be used if the need arises.
 
 Last it could also be speculated that with many languages the existing language documentation resources are the largest available body of texts in that language.
 In these cases one could also imagine scenario where the language documentation data could be directly used to create an OCR model.
@@ -192,7 +262,7 @@ The data does not form the parallel sentences as such, but still those texts are
 Applying tools such as named entity recognition into this kind of data could be very interesting for both language documentation and language technology, as well as to ordinary users and wider research in related fields such as anthropology.
 
 Even more abstract parallels can be drawn between spoken and written resources, since there are many stories and narratives which have been recorded in different retellings and also published multiple times.
-A good example of this is the folktale Zarńia Bözha Kań, which also connects to the Russian folktale Maša i Medved'.
+A good example of this is the folktale Zarńia Bözha Kań, which also connects to the Russian folktale Maša i Medved.
 It is published in two different variants which are both stored in Komi Nebögain collection in Syktyvkar, and also has been recorded, told by Vasiliy Lytkin in 1957.
 Even more curiously, I've found relatively similar narratives in recently published corpus of Beserman Udmurt.
 It is still unknown how this data can exactly be used, but as far as I see there are lots of open roads which can be explored.
@@ -211,4 +281,12 @@ Conversations have also been ongoing to add it into interfaces such as Korp.
 
 It is easy to talk about the differences in the data different projects deal with and produce, but there is a lot that is essentially same in all OCR workflows.
 These similarities mean that most of the practices and solutions which work in one place will also work elsewhere.
-There is some kind of a boundary in 
+
+There is some kind of a boundary between modern printed resources and early modern manuscripts and prints, and lots of tools are customized to work with one or another.
+I also outlined above that the needs for presentation are clearly different with the handwritten manuscripts and printed products.
+This said, the boundary is not that clearly cut.
+The researchers are also today producing hand written fieldnotes, handling of which does not essentially differ what what we have to do for the notes of the figures at the Castrén's time.
+This is also obvious in the work we are doing in INEL.
+Kuzmina's and Donner's fieldnotes share between one another more than they differ, although there is more than a century differentiating them. 
+
+# References
