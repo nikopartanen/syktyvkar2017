@@ -1,0 +1,89 @@
+---
+title: "Challenges related to the use of OCR'd text: INEL experiences"
+author: "Niko Partanen"
+date: "31 January 2017"
+output: 
+  pdf_document: 
+    highlight: tango
+    latex_engine: xelatex
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to digitalize printed and hand written materials. Within INEL project we have done a wide ranging evaluation of different tools currently available, and despite our satisfactory results one must also acknowledge the existence of several alarming bottlenecks, insuitable technical combinations and dead ends within the existing workflows. Moreover, it must be recognized that mere OCR of the text is often not enough in order to provide materials ready for linguistic analysis, but further restructuring is necessary. In this paper different problems are identified, and as far as possible, alternatives are offered and escape routes envisioned.
+
+Although computational linguistics often rely on command line tools, there are some tasks which are particularly unsuitable to be done in terminal. One of these is post-processing of OCR result. Indeed, this task in almost all cases demands visual comparison between the recognized text and the original image. There are plenty of different tools which offer possibility to manually correct OCR'd text, and virtually all of them have very similar user interfaces. The page image is on the left, and the text field on the right, and moving cursor around the text field has some kind of correspondence on top of the image. From this point of view it is necessary to recognize character or word location on the page as essential part of the OCR result, since it is impossible to imagine a post-correction workflow which would function without this information, albeit there are cases where page position information can also be considered as unnecessary to bring into later annotation phases.
+
+Compared to this, the initial training of an OCR model is very well suited to command line environment, especially for the transparency and reproducibility of the training process. 
+
+Following attributes would ideally be present in the output format:
+
+- Recognized word
+- Coordinates on page
+- Recognition confidence
+- Information about used OCR system
+    - Version
+    - System settings
+    - Model used (with version, ideally commit hash from version control)
+
+The format itself is naturally trivial, but some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy. However, often offered formats such as plain text files are clearly not satisfactory.
+
+In this paper I compare the OCR model development in two OCR tools, OCRicola and Abbyy FineReader. In OCRicola I have used Skolt Saami as the test language, and in Abbyy FineReader Desktop I have used cyrillic Dolgan script. The Skolt Saami language model is distributed with this paper. The Skolt Saami language model has been developed in 2015 on University of Helsinki, and Dolgan work has been done in the University of Hamburg during 2016. 
+
+# Current solutions
+
+At the moment the OCR market are dominated by ABBYY FineReader and Tesseract. The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspective of open science. Tesseract, and its derivations such as OCRicola, are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different software, and at least in INEL we haven't found any good combination of tools around which we could have a highly reliable workflow.
+
+The main problem with ABBYY based solutions is that the two versions of this program, Desktop and Engine, are very stricktly apart and it is not possible to combine their functionalities. The main functionality which Abbyy Desktop lacks is XML export. There is no export format which would directly store the page position information. However, in the Desktop version it is possible to train new language models. I will cover this more in detail below, but within this the problem is that the models trained Abbyy Desktop cannot be used in Abbyy Engine, which would have long-needed XML export. Also it is certain that many users would not want to rely on desktop environment, but would like to automatize their work in different ways, which in principle could be done with Abbyy Engine. However, with rare scripts and endangered languages the current models are highly insufficient and some additional training is necessary in order to achieve satisfactory output.
+
+In INEL we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep well the paragraph structure and, with some manual maintenance, also page numbering. This disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
+
+## Training an Tesseract/OCRicola model
+
+Tesseract model training is based to the idea that an example images are generated from an example text and a font.
+
+## Training an Abbyy model
+
+Abbyy model training is a black box from which something quite good usually comes out.
+
+
+# Digitalization of the text or the book
+
+I have often encountered the thought that the page position information would not be needed. However, there are several situations where this information is very critical. For example, different page elements such as page numbers are very easy to recognize from the layout when their position is known, but tend to get very messily mixed with rest of the content when the position information is lost.
+
+It can be argued that there are special cases where this information can be disregarded. For example, when working with texts like Bible or Koran the original verse structure is usually enough to distinguish different elements, and in many instances the sameness of the text in each version is very highly enforced. Thereby OCR can be seen as a mean to get the text, but not so much as effort to digitalize the entire individual book or manuscript. More rare and more subjective to read the text is, more valuable it is to be able to reproduce the original text or to easily match the recognized words to positions on the page. In this sense OCR is ultimately just an attempt to claim that on these pixels, or on these millimeters on the original page, we have representations of these specific characters. Especially with old typefaces or handwritten manuscripts the matter of interpretation tends to become more significant. In the Skolt Saami and Dolgan texts I compare here this was not the issue.
+
+# Ideal scenario
+
+We can compare...
+
+## Web based solutions
+
+Revizor...
+
+## Recognized text as data packages
+
+Where should the recognized texts be stored? I would say that a public repository of some sort is an ideal solution.
+
+## Need for REST API
+
+Ideally one could easily open a wanted text in an online editor, save the changes and use an API to get the newest version and append that to the public repository.
+
+# Challenges for language technology
+
+OCR'd texts offer many important tasks for natural language processing. First of all, there is the need to transform highly idiosynchronic writing systems into same ideally phoneme level representation. Moreover, OCR'd text is often not split neatly to individual words, but somewhat specific form of tokenization has to be employed. In the same vein one could also ask for detokenization, since the result of OCR is often not really the sentences, but not really the word tokens either. It is something in between, and the ready tools may not be adjusted to work exactly with that.
+
+Mere written text often needs some kind of a morphological analysis in order to be more usable for linguistic analysis. Thereby applying different tools to this end is highly desiderable. It can also be mentioned that many texts are attractive targets for named entity recognition (NER) since they often cover repeatedly same prominent historical events in different languages.
+
+# Meeting with language documentation
+
+In corpus linguistics and language technology the texts are usually treated the target of investigation in themselves. When applied to the endangered languages, there is often need to personalize them further and add into metadata information about the writers and translators themselves. Instead of variables such as publishing time and place there is obvious need to know writer's birth time and birth place, among other things, but already those tell quite a bit about the possible native dialect of the writer. Often this kind of information is stored already in public repositories such as Wikipedia, so it is one additional question how to employ these connections the most effective way.
+
+In many endangered language communities the pool of active and prominent speakers is small. It is highly likely that the same individuals have been writing to local newspapers and even published longer pieces of prose, and have also been speaking in public events which have been recorded. Or they have ended up to be recorded by different linguists of ethnographers, resulting in archive items which can be relatively easily associated with each other.
+
+Last it could also be speculated that with many languages the existing language documentation resources are the largest available body of texts in that language. In these cases one could also imagine scenario where the language documentation data could be direclty used to create an OCR model. This is somewhat counterintuitive, but text is text, and if the match between phoneme representation in written and spoken varieties is close enough, which it often is with languages with new orthographies, the changes for this to succeed are high.
