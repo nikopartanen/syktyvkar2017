@@ -103,13 +103,51 @@ One demand for this is certainly to stop building a new software in every projec
 In INEL we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep well the paragraph structure and, with some manual maintenance, also page numbering.
 This disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
 
+## Basics of OCR model training
+
+OCR model training can be on different levels, and Abbyy and Tesseract in my example cases employ opposite strategies.
+This is a matter of level on which the recognition is being performed.
+
+    character < character combination < wordform <  morphological model
+
+The Abbyy, as we have used it with minority languages, has been used by us on character and character combination level.
+This allows using other Cyrillic model, such as Russian, as a backbone and build upon that by adding the special characters needed.
+Since the wordform information is not used at all, there is no interference from the Russian word frequency and character combination information which the software has.
+New combinations can also be trained, which can be especially helpful when teaching Abbyy to recognize rare and new characters which are not in Russian orthography.
+The next step would be to feed from Dolgan corpus to Dolgan Abbyy model, but one factor that makes this complicated is that different publications use different enough scripts that the modeling often has to be done individually for each publication.
+One benefit from this relatively shallow model is that it does not get mixed up by dialectal variation in the wordforms, as it doesn't look beyond individual characters.
+
+With Skolt Saami the situation is different.
+The Skolt Saami morphological analysator is very well developed in GiellaTekno infrastructure and it performs well in common tasks such as spell recognition.
+This means it is also suitable for OCR work.
+<!-- Explain the downsides! -->
+
 ## Training an Tesseract/OCRicola model
 
 Tesseract model training is based to the idea that an example images are generated from an example text and a font.
+OCRicola is a software built on basis of Tesseract and has most of the same functionality.
+The main difference between the tools is that OCRicola is able to use finite state transducer (HFST) to generate the word forms used in recognition.
+In theory this approach is superior to corpus based input, since the morphological analysator is able to generate also the forms which are never present in the corpus but may occur in a new text.
+One issue related to this is that OCRicola was split from Tesseract version 3.XX, and currently we are already in [Tesseract 4.00](https://github.com/tesseract-ocr/tesseract).
+This is not necessarily a problem, but the newest Tesseract already includes a neural network subsystem as a new type of textline recognizer.
+This suggests that over time there will be very interesting new features in Tesseract.
+However, since both Tesseract and OCRicola are open source software, someone can always pick up the OCRicola and merge it back with newer Tesseract in case need arises.
+
+I built the Skolt Saami OCR model at the autumn 2015 and was hired to the task by Jack Rueter.
+The main obstacle I had in the work was the lack of Skolt Saami corpus which would be large and free enough, in addition with the lack of layout recognition and post correction tools in OCRicola.
+
+Now, in 2017, the Skolt Saami corpus availability has once again improved with new texts having been included into [Giellatekno Korp](http://gtweb.uit.no/korp).
+Thereby I used Korp API to update my OCR model and include that also into this publication as an example.
+This would be impossible to do with tools such as Abbyy Finereader.
+<!-- Check if Abbyy models can be somehow shared between computers? -->
+
+The availability of the fonts for Skolt Saami is relatively good now.
+<!-- List here some open access fonts which contain all characters -->
 
 ## Training an Abbyy model
 
-Abbyy model training is a black box from which something quite good usually comes out.
+In contrary to Tesseract/OCRicola model, Abbyy takes care most of the things by itself without user interference.
+This can be seen as both an up or downside, since it makes the model development entirely non-transparent.
 
 # Digitalization of the text or the book
 
