@@ -41,6 +41,12 @@ From this point of view it is also necessary to recognize character or word loca
 
 Compared to this, the initial training of an OCR model is very well suited to command line environment, especially for the transparency and reproducibility of the training process.
 
+In this paper I compare the OCR model development in two OCR tools, OCRicola and Abbyy FineReader.
+In OCRicola I have used Skolt Saami as the test language, and in Abbyy FineReader Desktop I have used cyrillic Dolgan script.
+The Skolt Saami language model is distributed with this paper.
+The Skolt Saami language model has been developed in 2015 on University of Helsinki, and Dolgan work has been done in the University of Hamburg during 2016.
+The majority of the work presented in this paper was carried on within the INEL project in 2016, although the main author has been using different OCR tools during the last few years.
+
 ## What is desired
 
 Following attributes would ideally be present in the output format:
@@ -57,24 +63,37 @@ Following attributes would ideally be present in the output format:
 The format itself is naturally trivial, but some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
 However, often offered formats such as plain text files are clearly not satisfactory.
 
-In this paper I compare the OCR model development in two OCR tools, OCRicola and Abbyy FineReader.
-In OCRicola I have used Skolt Saami as the test language, and in Abbyy FineReader Desktop I have used cyrillic Dolgan script.
-The Skolt Saami language model is distributed with this paper.
-The Skolt Saami language model has been developed in 2015 on University of Helsinki, and Dolgan work has been done in the University of Hamburg during 2016. 
+The most problematic of the desired information is the styling, since this is expressed in very complex manner in printed publication.
+By *style* I refer to the settings such as italic or bold font, titles etc.
+I believe some features such as paragraph change can be later analysed from the line positions on the page, and thereby it doesn't belong directly to the OCR result itself.
 
 # Current solutions
 
 At the moment the OCR market are dominated by ABBYY FineReader and Tesseract.
-The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspective of open science.
-Tesseract, and its derivations such as OCRicola, are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different software, and at least in INEL we haven't found any good combination of tools around which we could have a highly reliable workflow.
+The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspectives of open science and software.
+Tesseract, and its derivations such as OCRicola, are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different software, and at least in INEL we haven't found any good combination of tools which could offer a highly reliable workflow.
 
 The main problem with ABBYY based solutions is that the two versions of this program, Desktop and Engine, are very stricktly apart and it is not possible to combine their functionalities.
 The main functionality which Abbyy Desktop lacks is XML export.
-There is no export format which would directly store the page position information.
+This means there is no export format which would directly store the page position information.
 However, in the Desktop version it is possible to train new language models.
-I will cover this more in detail below, but within this the problem is that the models trained Abbyy Desktop cannot be used in Abbyy Engine, which would have long-needed XML export.
+I will cover this more in detail below, but within this the problem is that the models trained Abbyy Desktop cannot be used in Abbyy Engine, which would have needed XML export.
 Also it is certain that many users would not want to rely on desktop environment, but would like to automatize their work in different ways, which in principle could be done with Abbyy Engine.
 However, with rare scripts and endangered languages the current models are highly insufficient and some additional training is necessary in order to achieve satisfactory output.
+
+It is a good question why Abbyy doesn't maintain the page position information.
+For a long time I was suspecting this was because of capitalistic business interests: there are some reasons why it is more lucrative not to offer XML export for the casual user.
+However, after using Abbyy for a longer while I've started to assume there is a softer reson.
+Maybe Abbyy doesn't know how to store user edited position information?
+When the user edits the text in Abbyy, there are moments where the word entirely loses the highlighting, as if the software would not have information about the position any longer.
+There are similar problems with the Revizor editor developed by National Library of Finland in Fenno-Ugrica project.
+In Revizor the information is usually kept, but especially at the line edges it seems to lose the knowledge about which words were originally on the other line.
+This all signals that is must be extremely difficult to store word position information in user edited text.
+The assumption is very logical in the sense that the user can easily copy and paste text around, delete some words and retype them, and somehow the software would still need to keep track of positions.
+If the task is too difficult for the industry leader, we may in a deeper trouble than we thought, as it is unlikely smaller Open Source projects could reinvent this task.
+On the other hand Machine Learning based tools are advancing now so fast that many tasks we currently think are challenging may find surprising solutions in the coming years.
+I remain optimistic that in the longer run the Open Source community will emerge as the winner.
+One demand for this is certainly to stop building a new software in every project and cooperate more across different parties.
 
 In INEL we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep well the paragraph structure and, with some manual maintenance, also page numbering.
 This disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
