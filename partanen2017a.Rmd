@@ -1,5 +1,5 @@
 ---
-title: "Challenges related to the use of OCR'd text: INEL experiences"
+title: "Challenges OCR today: INEL experiences"
 author: "Niko Partanen"
 date: "31 January 2017"
 output: 
@@ -47,7 +47,9 @@ The Skolt Saami language model is distributed with this paper.
 The Skolt Saami language model has been developed in 2015 on University of Helsinki, and Dolgan work has been done in the University of Hamburg during 2016.
 The majority of the work presented in this paper was carried on within the INEL project in 2016, although the main author has been using different OCR tools during the last few years.
 
-## What is desired
+# Current solutions
+
+## What do I want?
 
 Following attributes would ideally be present in the output format:
 
@@ -66,8 +68,6 @@ However, often offered formats such as plain text files are clearly not satisfac
 The most problematic of the desired information is the styling, since this is expressed in very complex manner in printed publication.
 By *style* I refer to the settings such as italic or bold font, titles etc.
 I believe some features such as paragraph change can be later analysed from the line positions on the page, and thereby it doesn't belong directly to the OCR result itself.
-
-# Current solutions
 
 At the moment the OCR market are dominated by ABBYY FineReader and Tesseract.
 The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspectives of open science and software.
@@ -149,17 +149,51 @@ Mere written text often needs some kind of a morphological analysis in order to 
 Thereby applying different tools to this end is highly desiderable.
 It can also be mentioned that many texts are attractive targets for named entity recognition (NER) since they often cover repeatedly same prominent historical events in different languages.
 
+One particularly relevant tiny task I can foresee is the automatic matching of recognized text with the original pages.
+This can be done by comparing automatically the proofread text masses with the XML output with word coordinate information.
+The two texts are naturally different, as one variant is not proofread and contains many errors which never have been present in the other version.
+However, I believe this is a minor obstacle, and detecting the most similar pages (especially knowing that the following page normally continues the text) should be very doable in immediate future.
+I have not found any existing solutions to this, which again may reflect the immaturity in the use of OCR'd research data in the fields where high quality text output is a necessary or high preference.
+
 # Meeting with language documentation
 
 In corpus linguistics and language technology the texts are usually treated the target of investigation in themselves.
-When applied to the endangered languages, there is often need to personalize them further and add into metadata information about the writers and translators themselves.
+When applied to the endangered languages, there is often need to personalize them further and add into metadata information about the writers and translators.
 Instead of variables such as publishing time and place there is obvious need to know writer's birth time and birth place, among other things, but already those tell quite a bit about the possible native dialect of the writer.
 Often this kind of information is stored already in public repositories such as Wikipedia, so it is one additional question how to employ these connections the most effective way.
 
 In many endangered language communities the pool of active and prominent speakers is small.
 It is highly likely that the same individuals have been writing to local newspapers and even published longer pieces of prose, and have also been speaking in public events which have been recorded.
 Or they have ended up to be recorded by different linguists of ethnographers, resulting in archive items which can be relatively easily associated with each other.
+Similarly in case the writers have deceased it can be expected that many communities recognize and remember them.
+
+One also has to take into account that as the number of available resources grow, it is often not realistic that the research is conducted with one specific corpus, but there are possibilities 
 
 Last it could also be speculated that with many languages the existing language documentation resources are the largest available body of texts in that language.
-In these cases one could also imagine scenario where the language documentation data could be direclty used to create an OCR model.
+In these cases one could also imagine scenario where the language documentation data could be directly used to create an OCR model.
 This is somewhat counterintuitive, but text is text, and if the match between phoneme representation in written and spoken varieties is close enough, which it often is with languages with new orthographies, the changes for this to succeed are high.
+
+## Research possibilities of the parallel texts
+
+Within Fenno-Ugrica project it has clearly been one of the corner ideas to collect resources which exist in several languages spoken in Russia.
+Thereby there are now publications such as Four Battles, which are translated to nine different Uralic languages.
+A cursory Google search reveals that translations must exist also in different Turkic languages.
+When the books are compared the texts appear immediately useful, since they share exactly the same structure, often almost on sentence level with only small deviations.
+Extracting the parallel sentences can be done with customary command line tools (Perl, sed) and, for example, hunalign, which automatically detects matching sentences and outputs a format that can be used in further processing.
+However, aligning the sentences is currently somewhat time consuming and more elaborate workflows are desperately needed.
+That said, matching the sentences is rewarding and fast enough that doing it manually for individual books is entirely feasible.
+
+However, there are also resources which are parallel in less obvious ways.
+There are historical events which have been covered in every newspaper in the Soviet Union and beyond.
+The data does not form the parallel sentences as such, but still those texts are thematically linked in very intriguing ways.
+Applying tools such as named entity recognition into this kind of data could be very interesting for both language documentation and language technology, as well as to ordinary users and wider research in related fields such as anthropology.
+
+Even more abstract parallels can be drawn between spoken and written resources, since there are many stories and narratives which have been recorded in different retellings and also published multiple times.
+A good example of this is the folktale Zarńia Bözha Kań, which also connects to the Russian folktale Maša i Medved'.
+It is published in two different variants which are both stored in Komi Nebögain collection in Syktyvkar, and also has been recorded, told by Vasiliy Lytkin in 1957.
+Even more curiously, I've found relatively similar narratives in recently published corpus of Beserman Udmurt.
+It is still unknown how this data can exactly be used, but as far as I see there are lots of open roads which can be explored.
+
+# Closing words
+
+The usability of different workflows related to OCR and reuse of the materials is closely connected to copyright. As discussed, there 
