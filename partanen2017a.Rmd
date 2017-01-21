@@ -18,8 +18,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to digitalize printed and hand written materials.
 During the last years there have been multiple very important and large digitalization projects, run both by academic institutions and libraries, often in cooperation.
-This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in a way which have never before been possible.
+This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in ways which have never before been possible.
 Since many projects have produced millions of scanned pages, the principal question is how we can use this data.
+By use I refer primarily to the use in scientific research and also would prioritize highly use which makes materials better available for the community of speakers themselves.
+As we are discussing mainly minority language materials, the commercial use is not the most relevant issue.
+Also from this perspective working primarily with data that can be released on permissive licenses is the most advisable approach.
+
 Most of the time the first step is to find some solutions to perform OCR on the text.
 To take this further, there are several tasks which have to be undertaken before the data is actually ready to be used by general audience or researchers.
 It seems to me that many of these tasks have not been commonly discussed, which is why I want to present some of my thoughts on the topic in this paper.
@@ -159,7 +163,10 @@ Detecting it from unstructured lines is, on the other hand, rather hopeless.
 
 It can be argued that there are special cases where this information can be disregarded.
 For example, when working with texts like Bible or Koran the original verse structure is usually enough to distinguish different elements, and in many instances the sameness of the text in each version is very highly enforced.
+Some ocr'd texts, for example elicitated sentences or structured questionnaires, follow essentially the same model where each utterance can be identified as parts of these closed sets.
+
 Thereby OCR can be seen as a mean to get the text, but not so much as effort to digitalize the entire individual book or manuscript.
+Only later post processing turns the text into research data.
 More rare and more subjective to read the text is, more valuable it is to be able to reproduce the original text or to easily match the recognized words to positions on the page.
 In this sense OCR is ultimately just an attempt to claim that on these pixels, or on these millimeters on the original page, we have representations of these specific characters.
 Especially with old typefaces or handwritten manuscripts the matter of interpretation tends to become more significant.
