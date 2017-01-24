@@ -240,7 +240,7 @@ This is also one of the work phases which would most benefit from graphical user
 
 The OCR itself can be performed without any human supervision.
 
-## Post-correctin of the texts
+## Post-correction of the texts
 
 There are some experiences that the OCR resulting text can be corrected to some degree with simple automatic scripts [@arkhangelskiyEtAl2016a].
 This is certainly true.
