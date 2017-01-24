@@ -23,42 +23,51 @@ In order to do this the content has to be accessible, and with the written docum
 Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to bring printed and hand written materials into further use.
 OCR aims to produce a *text encoding* from the image data.
 This refers explicitly to detection of individual signs in the text, which can be represented in the resulting document in different ways.
-Naturally the current preferred standard would be representation with closely matching Unicode characters.
+The current preferred standard would be representation with closely matching Unicode characters, in case those are available.
+The coverage of Unicode has extended continuously, but there are still few dark corners left.
+
 During the last years there have been multiple very important and large digitalization projects, run both by academic institutions and libraries, often in cooperation.
-Some of these, such as Endangered Archives ran by the British Library, have focused mainly to audio and photograph mediums.
-Others, namely Fenno-Ugrica and work done in Syktyvkar, are good examples from the systematic digitalization of written resources.
+Some of these, such as [Endangered Archives](http://eap.bl.uk/) ran by the British Library, have focused mainly to audio and photograph mediums.
+Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/) and [Komi Kyv](http://komikyv.ru/) website maintained in Syktyvkar, are good examples from the systematic digitalization of written resources.
 This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in ways which have never before been possible.
 Since many projects have produced millions of scanned pages, the principal question is how we can use this data.
 By use I refer primarily to the use in scientific research and also would prioritize highly use which makes materials better available for the community of speakers themselves.
 As we are discussing mainly minority language materials, the commercial use is not the most relevant issue.
 Also from this perspective working primarily with data that can be released on permissive licenses is the most advisable approach.
+Unfortunately very few projects have adopted clear licenses on the data, mainly Fenno-Ugrica, which has decided to use Public Domain.
+It is foreseeable that in the future this will be one of the questions which have to be answered in relation to different uses.
 
 In INEL project we have been working with the digitalization of Selkup, Dolgan and Kamas materials.
 In contrary to the projects mentioned earlier, our focus has been primarily in the published fieldwork materials and other representations of spoken primary data on these languages.
 Since INEL is a long term project, the workflows and conventions established now will be extended further into new languages.
-Komi-Permyak and Komi-Yazva will also be included in INEL in 2020-2023, which is relevant in the Permic context of this conference as well.
+Komi-Permyak and Komi-Yazva will also be included in INEL, which is relevant in the Permic context of this conference as well.
 The texts we work with tend to fall into two distinct categories: hand written manuscripts and published printed transcriptions.
 This data is also unusually complex because the transcriptions are usually related into different archival audio recordings, but the relation may not be entirely transparent.
+Currently Daniel Jettka is implementing a graph database as a solution to store interlinked data, which looks like a solution with many good sides to deal with complicated data model inherent with our data. 
 For example, with some Selkup transcriptions the recordings are apparently different versions from the ones recorded.
 At the same time the same transcriptions may have been published in several publications in somewhat different versions and using various transcription conventions.
+The same recordings may be stored in different formats and copies in various archives.
+All this brings additional layer of complexity to the metadata associated with the primary data.
+
 The situation is similar with digitalization of fieldwork materials on majority of Uralic languages spoken in Russia.
-This is also a very particular case for OCR tools since the scripts used are often not included in available OCR models, the number of diacritics may make the scripts extremely complex and the fonts used may be very customized for specific publications.
+This is also a very particular case for OCR tools since the scripts used are often not included in available OCR models, the number of diacritics can make the scripts extremely complex and the fonts used may be very customized for specific publications.
 Indeed the variation between the publications may often be so high that it is necessary to question how much effort has to be put into OCR development, if the specific variety is used only on few pages in one publication.
 It seems that in many ways the OCR needs of printed transcriptions could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, possibly mainly in the volume of the texts (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum).
 In many cases also the copyright questions tend to get very complex with the legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways.
+That said, it seems we are still far away even from solving the copyright issues to a very simple data, so the question should not be made overly complicated in this point.
 
 In INEL we have currently implemented OCR tools only to printed texts, but in principle to extend this into hand written texts will be in some point necessary.
 Since the hand written text recognition is still actively developing field, the choose of software on this domain is narrow.
 One good candidate to take into consideration is [Transkribus](https://transkribus.eu), developed in Innsbruck, Austria, but very likely other solutions will still emerge.
 Also here it has to be taken into account that the distinction between hand written and printed is possibly less relevant than the distinction between combining and distinct characters.
 
-# Path to OCR
+# Basics of OCR workflow
 
 Most of the time the first step is to find some solutions to perform OCR on the text.
 To take this further, there are several tasks which have to be undertaken before the data is actually ready to be used by general audience or researchers.
 It seems to me that many of these tasks have not been commonly discussed, which is why I want to present some of my thoughts on the topic in this paper.
 Although not strictly speaking new research, this paper aims to introduce several concepts into discussion when the OCR tools are evaluated and chosen.
-Within INEL project [@wagner-nagyEtAl2015a] we have done a wide ranging evaluation of different tools currently available, and despite our satisfactory results one must also acknowledge the existence of several alarming bottlenecks, insuitable technical combinations and dead ends within the existing workflows.
+Within INEL project [@wagner-nagyEtAl2015a] we have done a wide ranging evaluation of different tools currently available for tasks relevant for us, and despite our satisfactory results one must also acknowledge the existence of several alarming bottlenecks, insuitable technical combinations and dead ends within the existing workflows.
 
 Moreover, it must be recognized that mere OCR of the text is often not enough in order to provide materials ready for linguistic analysis, but further restructuring is necessary.
 Often it adds value to automatically extract more information than just the text, as many documents contain systematically information about the author, location and time, among many other metadata variables.
@@ -66,40 +75,35 @@ Information about the position and layout for characters, lines and words on pag
 The need for this is of course entirely different depending from the text type, since it is entirely possible to represent a book as a linear text paragraphs, which is not possible for newspaper texts which are divided into more complex layout elements.
 As a more technical note, also the recognition confidence for individual characters could be very useful for further post processing.
 This naturally grows importance with languages which have less mature OCR environment.
-As a last introductory comment, it must be emphasized that OCR is one of the few computational tasks where manual post-correction is still necessary in the majority of cases.
 In this paper different problems are identified, and as far as possible, alternatives are offered and escape routes envisioned.
 
 Although computational linguistics often rely on command line tools, there are some tasks which are particularly unsuitable to be done in terminal.
 As mentioned, one of these is post-processing of OCR result.
-This task in almost all cases demands visual comparison between the recognized text and the original image.
+Another is manual correction of the detected text regions, since their correct definition is necessary for succesful OCR.
+Both of these tasks in almost all cases demands visual comparison between the recognized text and the original image.
 There are plenty of different tools which offer possibility to manually correct OCR'd text, and virtually all of them have very similar user interfaces.
 The page image is on the left, and the text field on the right, and moving cursor around the text field has some kind of correspondence on top of the image.
 This makes one wonder why so many projects have ended up to the solution to develope new tools for post-correction.
-From this point of view it is also necessary to recognize character or word location on the page as essential part of the OCR result, since it is impossible to imagine a post-correction workflow which would function without this information, albeit there are cases where page position information can also be considered as unnecessary to bring into later annotation phases.
+[Fenno-Ugrica](https://github.com/NatLibFi/ocrui-frontend) has their own tool, [Deutches Textarchiv](http://www.deutsches-textarchiv.de/doku/software) has their own.
+[PoCoTo](http://thorstenv.github.io/PoCoTo/) has been developed in CIS Munich within a larger EU project, and uniquely from the others, it seems to have features related to batch correction of systematic mistakes. 
+Also from this point of view one has to recognize character or word location on the page as an essential part of the OCR result, since it is impossible to imagine a post-correction workflow which would function without this information.
 
 Compared to this, the initial training of an OCR model is very well suited to command line environment, especially for the transparency and reproducibility of the training process.
 
-In this paper I compare the OCR model development in two OCR tools, OCRicola and Abbyy FineReader.
-In OCRicola I have used Skolt Saami as the test language, and in Abbyy FineReader Desktop I have used cyrillic Dolgan script.
-The Skolt Saami language model is distributed with this paper.
-The Skolt Saami language model has been developed in 2015 on University of Helsinki, and Dolgan work has been done in the University of Hamburg during 2016.
-The majority of the work presented in this paper was carried on within the INEL project in 2016, although the main author has been using different OCR tools during the last few years.
-
 # Current solutions
 
-## What do I want?
+## What is needed
 
-Different OCR editors are very similar in their basic layout, and usually comprise of parallel pages with one half of the screen containing a frame for image and other for the recognized text.
-However, many tools still tend to lack some features, the most critical of which are:
+Albeit there are several tools, many of them still tend to lack some features, the most critical of which are:
 
 - Lack of search and replace with regular expressions [@mancinelli2016a, 259]
-- Lack of XML export
+- Lack of good XML export
 
-The first issue connects to automatization of the proofreading process, since some mistakes are always systematic and could be easily corrected in post correction phase.
-The export format causes a more serious issue.
+The first issue connects to automatization of the proofreading process, since some mistakes are always systematic and could be easily corrected in the correction phase.
+The export format causes a more serious issue, as it connects to post processing and reuse.
 Following attributes would ideally be present in the output format:
 
-- Recognized word
+- Recognized word (or character)
 - Coordinates on page
 - Recognition confidence
 - Some style information
@@ -109,29 +113,31 @@ Following attributes would ideally be present in the output format:
     - Model used (with version, ideally commit hash from version control)
     - Information about page processing, if that was performed
 
-The format itself is naturally trivial, but some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
-However, often offered formats such as plain text files are clearly not satisfactory.
+The format itself is trivial, but some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
+However, often offered formats such as plain text file, Word document or PDF are clearly not satisfactory.
 
 The most problematic of the desired information is the styling, since this is expressed in very complex manner in printed publication.
 By *style* I refer to the settings such as italic or bold font, titles etc.
 I believe some features such as paragraph change can be later analysed from the line positions on the page, and thereby it doesn't belong directly to the OCR result itself.
 
-At the moment the OCR market are dominated by ABBYY FineReader and Tesseract.
+At the moment the OCR market is dominated by ABBYY FineReader and Tesseract.
 The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspectives of open science and software.
-Tesseract, and its derivations such as OCRicola, are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different software, and at least in INEL we haven't found any good combination of tools which could offer a highly reliable workflow.
+Tesseract, and its derivations such as [OCRicola](https://sourceforge.net/projects/ocricola), are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different tools, and at least in INEL we haven't found any good combination of tools which could offer a highly reliable workflow.
 
-The main problem with ABBYY based solutions is that the two versions of this program, Desktop and Engine, are very stricktly apart and it is not possible to combine their functionalities.
+The main problem with ABBYY based solutions is that the two versions of this program, Desktop and Engine, are very strongly apart from one another and it is not possible to combine their functionalities.
 The main functionality which Abbyy Desktop lacks is XML export.
 This means there is no export format which would directly store the page position information.
 However, in the Desktop version it is possible to train new language models.
 I will cover this more in detail below, but within this the problem is that the models trained Abbyy Desktop cannot be used in Abbyy Engine, which would have needed XML export.
 Also it is certain that many users would not want to rely on desktop environment, but would like to automatize their work in different ways, which in principle could be done with Abbyy Engine.
-However, with rare scripts and endangered languages the current models are highly insufficient and some additional training is necessary in order to achieve satisfactory output.
+However, with rare scripts and endangered languages the current language models are highly insufficient and some additional training is necessary in order to achieve satisfactory output.
+It would already be a half way solution to be able to use the models trained in Abbyy Desktop in Abbyy Engine. 
 
-It is a good question why Abbyy doesn't maintain the page position information.
+It is a good question why Abbyy Desktop doesn't have XML export.
 For a long time I was suspecting this was because of capitalistic business interests: there are some reasons why it is more lucrative not to offer XML export for the casual user.
+Maybe it would allow them to do too much, instead of relying on their more expensive options.
 However, after using Abbyy for a longer while I've started to assume there is a softer reson.
-Maybe Abbyy doesn't know how to store user edited position information?
+Maybe even Abbyy doesn't know how to store user edited position information?
 When the user edits the text in Abbyy, there are moments where the word entirely loses the highlighting, as if the software would not have information about the position any longer.
 There are similar problems with the Revizor editor developed by National Library of Finland in Fenno-Ugrica project.
 In Revizor the information is usually kept, but especially at the line edges it seems to lose the knowledge about which words were originally on the other line.
@@ -144,6 +150,7 @@ One demand for this is certainly to stop building a new software in every projec
 
 In INEL we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep well the paragraph structure and, with some manual maintenance, also page numbering.
 This disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
+The solution selected in INEL works in careful digitalization of individual texts one by one, but would not be satisfactory in large scale digitalization projects.
 
 ## Basics of OCR model training
 
@@ -154,37 +161,29 @@ This is a matter of level on which the recognition is being performed.
 
 The Abbyy, as we have used it with minority languages, has been used by us on character and character combination level.
 This allows using other Cyrillic model, such as Russian, as a backbone and build upon that by adding the special characters needed.
-Since the wordform information is not used at all, there is no interference from the Russian word frequency and character combination information which the software has.
+Since the wordform information is not used at all, there is no interference from the Russian word frequency and character combination information which the software could use with Russian text.
 New combinations can also be trained, which can be especially helpful when teaching Abbyy to recognize rare and new characters which are not in Russian orthography.
 The next step would be to feed from Dolgan corpus to Dolgan Abbyy model, but one factor that makes this complicated is that different publications use different enough scripts that the modeling often has to be done individually for each publication.
 One benefit from this relatively shallow model is that it does not get mixed up by dialectal variation in the wordforms, as it doesn't look beyond individual characters.
 
-With Skolt Saami the situation is different.
-The Skolt Saami morphological analysator is very well developed in GiellaTekno infrastructure and it performs well in common tasks such as spell recognition.
-This means it is also suitable for OCR work.
-<!-- Explain the downsides! -->
-
 ## Training an Tesseract/OCRicola model
 
+I did rather comprehensive testing of OCRicola and Tesseract in fall 2015, and especially OCRicola offers the opposite approach to what we are now doing with Abbyy.
 Tesseract model training is based to the idea that an example images are generated from an example text and a font.
 OCRicola is a software built on basis of Tesseract and has most of the same functionality.
 The main difference between the tools is that OCRicola is able to use finite state transducer (HFST) to generate the word forms used in recognition.
 In theory this approach is superior to corpus based input, since the morphological analysator is able to generate also the forms which are never present in the corpus but may occur in a new text.
 One issue related to this is that OCRicola was split from Tesseract version 3.XX, and currently we are already in [Tesseract 4.00](https://github.com/tesseract-ocr/tesseract).
-This is not necessarily a problem, but the newest Tesseract already includes a neural network subsystem as a new type of textline recognizer.
+As these are both open source projects, this is not necessarily a problem.
+However, for example, the newest Tesseract already includes a neural network subsystem as [a new type of textline recognizer](https://github.com/tesseract-ocr/tesseract/wiki/NeuralNetsInTesseract4.00).
 This suggests that over time there will be very interesting new features in Tesseract.
-However, since both Tesseract and OCRicola are open source software, someone can always pick up the OCRicola and merge it back with newer Tesseract in case need arises.
+One could think that the most exciting new features would be usable only with larger languages, but as the Komi Zyrian corpus is also now over 30 million words, I see no problems in adapting almost any approach which works with larger languages to Komi as well.
 
-I built the Skolt Saami OCR model at the autumn 2015 and was hired to the task by Jack Rueter.
-The main obstacle I had in the work was the lack of Skolt Saami corpus which would be large and free enough, in addition with the lack of layout recognition and post correction tools in OCRicola.
+Challenges with Tesseract/OCRicola model are related especially to the fonts and availability of large enough training corpus. With OCRicola the question arises also about the existence of available Finite State Transducer, but at least within the [Giellatekno](http://giellatekno.uit.no/) infrastructure a large portion of Uralic languages are already covered to different degrees.
 
-Now, in 2017, the Skolt Saami corpus availability has once again improved with new texts having been included into [Giellatekno Korp](http://gtweb.uit.no/korp).
-Thereby I used Korp API to update my OCR model and include that also into this publication as an example.
-This would be impossible to do with tools such as Abbyy Finereader.
-<!-- Check if Abbyy models can be somehow shared between computers? -->
+Tesseract is easy to use and install, but to get all dependencies installed correctly for training new models can be very complex and differs between versions.
+Probably this is not an unusual problem, and the installation is indeed possible and works, but this cannot be under any conditions described as straightforward or unproblematic.
 
-The availability of the fonts for Skolt Saami is relatively good now.
-<!-- List here some open access fonts which contain all characters -->
 
 ## Training an Abbyy model
 
