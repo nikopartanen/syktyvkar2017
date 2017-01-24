@@ -238,7 +238,7 @@ This is also one of the work phases which would most benefit from graphical user
 
 ## Running OCR
 
-The OCR itself can be performed without any human supervision.
+The OCR itself can be performed without any human supervision. As discussed, this is not the case with region detection and post correction, which both seem to be prone for errors that have to be manually corrected in case we want fully usable result. Similarly OCR training, described above, is a phase which needs careful examination while the model is being done so that it can be customized to work well.
 
 ## Post-correction of the texts
 
@@ -249,7 +249,17 @@ Needless to say, already this can produce a very large corpus, as the example of
 
 ## Publishing
 
-There are lots of good alternatives for publishing of the OCR'd text.
+Within INEL, the OCR is not a direct goal in itself, but the text extracted from the documents will be associated with its original recording.
+There are also cases where the original recording is lost or was never made, which is the case with older transcriptions.
+In the latter case the OCR'd document is the actual primary data source, or the closest representation of that which we can have.
+Thereby there has to be relatively close connection between the original text document and the later XML file.
+The currently used XML format in INEL is the one produced by [EXMARaLDA](http://exmaralda.org/en/).
+The tools within EXMARaLDA are mainly meant for work done with spoken language data, but we have had good experiences in using it also with the written data.
+The use of tools like these is inevitable since we cannot store in plain text files all the further annotations we want to provide.
+In [Hamburger Zentrum für Sprachkorpora](https://corpora.uni-hamburg.de) we have already a long practice to publish online different visualizations for spoken data (see Demo corpus on the HZSK website).
+During 2016 we have also tested different visualizations for interlinearized text which contains no multimedia, and also for this there are clearly many good options.
+
+Publishing the texts is naturally much more simple when there are no annotations.
 One of them is simply rendering the text as plain HTML.
 For a normally structured book this already makes the reading experience very enjoyable.
 On the other hand if it is possible to render the text into HTML, it is also possible to produce other formats such as EPUB which are very good to read on mobile devices.
