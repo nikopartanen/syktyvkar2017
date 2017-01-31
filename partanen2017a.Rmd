@@ -306,18 +306,6 @@ However, for many of the smaller languages these form a large issue.
 Thereby it is also advisable not to publish corpora with licenses which contain clauses such as No-Derivations, since an OCR model is a derivation of one sort.
 Although it may be largely untested what exactly constitutes as a derivation, I would not start to use such a corpora in this kind of work.
 
-## Web based solutions
-
-Revizor...
-
-## Recognized text as data packages
-
-Where should the recognized texts be stored? I would say that a public repository of some sort is an ideal solution.
-
-## Need for REST API
-
-Ideally one could easily open a wanted text in an online editor, save the changes and use an API to get the newest version and append that to the public repository.
-
 # Challenges for language technology
 
 OCR'd texts offer many important tasks for natural language processing.
