@@ -326,9 +326,10 @@ I have not found any existing solutions to this, which again may reflect the imm
 
 # Meeting with language documentation
 
-In corpus linguistics and language technology the texts are usually treated the target of investigation in themselves.
-When applied to the endangered languages, there is often need to personalize them further and add into metadata information about the writers and translators.
-Instead of variables such as publishing time and place there is obvious need to know writer's birth time and birth place, among other things, but already those tell quite a bit about the possible native dialect of the writer.
+In corpus linguistics and language technology the texts are usually treated as the target of investigation in themselves.
+When applied to the endangered languages, there is often need to personalize them further and add into metadata information about the writers and translators, among other relevant factors.
+Instead of variables such as publishing time and place there is obvious need to know writer's birth time and birth place.
+Already those tell quite a bit about the possible native dialect of the writer, which again can be one way to explain idiosynhcronic features of individual texts.
 Often this kind of information is stored already in public repositories such as Wikipedia, so it is one additional question how to employ these connections the most effective way.
 
 In many endangered language communities the pool of active and prominent speakers is small.
@@ -345,8 +346,7 @@ Last it could also be speculated that with many languages the existing language 
 In these cases one could also imagine scenario where the language documentation data could be directly used to create an OCR model.
 This is somewhat counterintuitive, but text is text, and if the match between phoneme representation in written and spoken varieties is close enough, which it often is with languages with new orthographies, the changes for this to succeed are high.
 
-## Research possibilities of the parallel texts
-
+There are also additional research possibilities with the parallel texts.
 Within Fenno-Ugrica project it has clearly been one of the corner ideas to collect resources which exist in several languages spoken in Russia.
 Thereby there are now publications such as Four Battles, which are translated to nine different Uralic languages.
 A cursory Google search reveals that translations must exist also in different Turkic languages.
@@ -359,25 +359,24 @@ Recently also a corpus of movie subtitles has been compiled ([ParTy](http://www.
 However, there are also resources which are parallel in less obvious ways.
 There are historical events which have been covered in every newspaper in the Soviet Union and beyond.
 The data does not form the parallel sentences as such, but still those texts are thematically linked in very intriguing ways.
-Applying tools such as named entity recognition into this kind of data could be very interesting for both language documentation and language technology, as well as to ordinary users and wider research in related fields such as anthropology.
+As mentioned, applying tools such as named entity recognition into this kind of data could be very interesting for both language documentation and language technology, as well as to ordinary users and wider research in related fields such as anthropology.
 
 Even more abstract parallels can be drawn between spoken and written resources, since there are many stories and narratives which have been recorded in different retellings and also published multiple times.
 A good example of this is the folktale Zarńia Bözha Kań, which also connects to the Russian folktale Maša i Medved.
-It is published in two different variants which are both stored in Komi Nebögain collection in Syktyvkar, and also has been recorded, told by Vasiliy Lytkin in 1957.
-Even more curiously, I've found relatively similar narratives in recently published corpus of Beserman Udmurt.
+It is published in two different variants which are both stored in Komi Nebögain collection in Syktyvkar, and also has been recorded by Erkki Itkonen, as told by Vasiliy Lytkin in 1957 (Kotus recording id: 1323_2az).
 It is still unknown how this data can exactly be used, but as far as I see there are lots of open roads which can be explored.
 
 # Closing words
 
 The usability of different workflows related to OCR and reuse of the materials is closely connected to copyright.
-From my perspective the best and clearest solution is done in Fenno-Ugrica collection, where everything is in Public Domain.
-This means that the data can be used in any possible way we can or will be able to imagine.
+From my perspective the best and clearest solution is to have as much data as possible in Public Domain.
+Even the use of different academic licenses are very problematic, since they do not correspond cleanly with commonly used open licenses, and it is unclear if they allow, for example, further derivations.
+As far as I can see, the majority of more interesting use would include creating derivational datasets of some sort.
+Only open enough license means that the data can be used in any possible way we can or will be able to imagine in the future.
 Naturally the existence of data in public domain is often related to the age of the data.
 This is why many large text corpora exist now for pre-1920's data, and as the years go by this year will gradually keep advancing.
 That said, it creates a situation where almost none of the presenters in this conference will live to see the currently published texts to enter Public Domain.
 There are exceptions such as the texts released into Public Domain by Ivan Belykh.
-Recently the main author of this article also compiled that text into an R package which makes it easily available.
-Conversations have also been ongoing to add it into interfaces such as Korp.
 
 It is easy to talk about the differences in the data different projects deal with and produce, but there is a lot that is essentially same in all OCR workflows.
 These similarities mean that most of the practices and solutions which work in one place will also work elsewhere.
@@ -387,6 +386,7 @@ I also outlined above that the needs for presentation are clearly different with
 This said, the boundary is not that clearly cut.
 The researchers are also today producing hand written fieldnotes, handling of which does not essentially differ what what we have to do for the notes of the figures at the Castrén's time.
 This is also obvious in the work we are doing in INEL.
-Kuzmina's and Donner's fieldnotes share between one another more than they differ, although there is more than a century differentiating them. 
+Kuzmina's and Donner's fieldnotes share between one another more than they differ, although there is more than a century differentiating them.
+Similarly early phonogram recordings can be dealt conceptually in rather similar way as the modern multimedia recordings.
 
 # References
