@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
+This paper presents some experiences and workflows from INEL project (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of the German Academies of Sciences and Humanities.
+
 In order to preserve the written cultural heritage, digital preservation is necessary, and there are already good standards for digitalization of books and manuscripts.
 The archiving projects can easily justify concentrating only to preservation of legacy materials, referring with this mainly to digitalization and metadata related catalogization.
 The next logical step after preservation is to bring these materials into common and scientific use.
