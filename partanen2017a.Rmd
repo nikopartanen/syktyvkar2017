@@ -354,7 +354,7 @@ When the books are compared the texts appear immediately useful, since they shar
 Extracting the parallel sentences can be done with customary command line tools (Perl, sed) and, for example, hunalign, which automatically detects matching sentences and outputs a format that can be used in further processing.
 However, aligning the sentences is currently somewhat time consuming and more elaborate workflows are desperately needed.
 That said, matching the sentences semi-automatically is rewarding and fast enough that doing it manually for individual books is entirely feasible.
-Recently also a corpus of movie subtitles has been compiled (ParTy by Levshina), but since that data comes with matching timelines the aligning task is very different.
+Recently also a corpus of movie subtitles has been compiled ([ParTy](http://www.natalialevshina.com/corpus.html) by Natalia Levshina), but since that data comes with matching timelines the aligning task is very different.
 
 However, there are also resources which are parallel in less obvious ways.
 There are historical events which have been covered in every newspaper in the Soviet Union and beyond.
