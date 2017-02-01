@@ -16,7 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-This paper presents some experiences and workflows from INEL project (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of the German Academies of Sciences and Humanities.
+This paper presents some experiences and workflows from INEL project (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). 
+The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of the German Academies of Sciences and Humanities.
 
 In order to preserve the written cultural heritage, digital preservation is necessary, and there are already good standards for digitalization of books and manuscripts.
 The archiving projects can easily justify concentrating only to preservation of legacy materials, referring with this mainly to digitalization and metadata related catalogization.
@@ -153,7 +154,11 @@ I remain optimistic that in the longer run the open source community will emerge
 One demand for this is certainly to stop building a new software in every project and cooperate more across different involved parties.
 
 In INEL we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep well the paragraph structure and, with some manual maintenance, also page numbering.
-This disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
+With the texts we have worked on it has been possible to distinguish page numbers as more or less sequantially growing numbers as only items on the line, and the chapter numbers have been on the same line with title or the first line of the text, in any case, not alone.
+However, this kind of definitions are not very generic and also needs continuous manual adjustation.
+The data retrieved this way is aligned with Russian sentences with hunalign-tool, again with some manual supervision, and converted into a Toolbox file with a simple script which transforms the file structure to fit Toolbox demands.
+This is eventually imported to FLEx, line, chapter and page information being stored on note tier.
+This workflow disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
 The solution selected in INEL works in careful digitalization of individual texts one by one, but would not be satisfactory in large scale digitalization projects.
 
 ## Basics of OCR model training
