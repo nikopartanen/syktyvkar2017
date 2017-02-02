@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-This paper presents some experiences and workflows from INEL project (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). 
+This paper discusses some experiences and workflows from INEL project (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). 
 The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of the German Academies of Sciences and Humanities.
 
 In order to preserve the written cultural heritage, digital preservation is necessary, and there are already good standards for digitalization of books and manuscripts.
@@ -30,6 +30,7 @@ The current preferred standard would be representation with closely matching Uni
 The coverage of Unicode has extended continuously, but there are still few dark corners left.
 However, it is clear that part of the content is in the structure of the text document, which means that simply retrieving the text is only one step.
 In my opinion it is still somewhat unclear what is the ideal format to store this restructured data so that it is most useful for linguists and other researchers.
+There are already available more wider and systematic comparisons of different OCR tools, see for example Tafti et. al. [-@taftiEtAl2016a], but I aim to contribute to the discussion by pointing out particular needs of language documentation, which possibly are relevant for the wider linguistic community as well.
 
 During the last years there have been multiple very important and large digitalization projects, run both by academic institutions and libraries, often in cooperation.
 Some of these, such as [Endangered Archives](http://eap.bl.uk/) ran by the British Library, have focused mainly to audio and photograph mediums.
@@ -125,7 +126,7 @@ The most problematic of the desired information is the styling, since this is ex
 By *style* I refer to the settings such as italic or bold font, titles etc.
 I believe some features such as paragraph change can be later analysed from the line positions on the page, and thereby it doesn't belong directly to the OCR result itself.
 
-At the moment the OCR market is dominated by ABBYY FineReader and Tesseract.
+At the moment the OCR market is dominated by ABBYY FineReader and Tesseract [@smith2007a].
 The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspectives of open science and software.
 Tesseract, and its derivations such as [OCRicola](https://sourceforge.net/projects/ocricola), are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different tools, and at least in INEL we haven't found any good combination of tools which could offer a highly reliable and reproduceable workflow.
 
