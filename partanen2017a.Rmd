@@ -300,7 +300,7 @@ What I would like to see the most is a set of tools which allow very easy and sh
 As I've discussed here, those needs may in reality be more similar than we think.
 The XML files could be even stored in public repositories such as GitHub, which would bring the work more towards actually open and collaborative science.
 
-# Ideal scenario
+## Ideal scenario
 
 In an ideal world the OCR model development could be done with Open Source tools for languages which have the following resources:
 
