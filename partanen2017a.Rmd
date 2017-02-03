@@ -22,7 +22,14 @@ The long-term project is funded within the framework of the Academies’ Program
 In order to preserve the written cultural heritage, digital preservation is necessary, and there are already good standards for digitalization of books and manuscripts.
 The archiving projects can easily justify concentrating only to preservation of legacy materials, referring with this mainly to digitalization and metadata related catalogization.
 The next logical step after preservation is to bring these materials into common and scientific use.
-In order to do this the content has to be accessible, and with the written documents this refers mainly to texts.
+Opening this kind of datasets is still in early phase, and many related practices are largely underdeveloped.
+For example, in Scandinavia the libraries have recently offered digitalized materials to the public use, although the focus has been in publications before 1910 [@paakkonenEtAl2016a].
+Within language documentation projects the concept of open data is barely discussed, and the most of the data seems to be behind differently restricted licenses or then with limitations to only academic use.
+In many cases this is needed due the personal privacy issues which are related to the nature of the data collected from private individuals.
+However, in part this must be connected to lack of knowledge and good practices with the licensing and data sharing more generally.
+This is very unfortunate, since incorrectly structured and licensed materials will take considerable future effort and negotiation to get them into active research use.
+
+In order to do provide better usability the content has to be accessible, and with the written documents this refers mainly to texts.
 Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to bring printed and hand written materials into further use.
 OCR aims to produce a *text encoding* from the image data.
 This refers explicitly to detection of individual signs in the text, which can be represented in the resulting document in different ways.
@@ -214,7 +221,7 @@ One additional issue is that only Abbyy Engine is able to produce ALTO XML, whic
 This is an open format, but this creates a setting where it is not possible to store the manually corrected versions in the preferred format.
 Due to this the Fenno-Ugrica collection also contains better versions in plain text files and worse recognition in XML files.
 
-# Digitalization of the text or the book
+# Approaches to the digitalization
 
 I have often encountered the thought that the page position information would not be needed.
 However, there are several situations where this information is very critical.
@@ -233,6 +240,14 @@ Only later post processing turns the text into research data.
 More rare and more subjective to reading and interpretation the text is, more valuable it is to be able to reproduce the original text or to easily match the recognized words to positions on the page.
 In this sense OCR is ultimately just an attempt to claim that on these pixels, or on these coordinates on the original page, we have representations of these specific characters.
 Especially with old typefaces or handwritten manuscripts the matter of interpretation tends to become more significant.
+
+There are other good discussions about the steps in OCR process, for example Holley [-@holley2009a] goes it through step by step. 
+The table 1 in her paper presents very well all needed phases.
+What I would mainly want to emphasize here, is that it is somewhat questionable how well the current tools actually store information about what exactly has been done in which point.
+The measure of this would be whether we are able to associate an arbitrary token in the final recognized text with the matching coordinates in the original manuscript, microfilm or whatever the source has been.
+At least in regard to INEL workflows the answer is unfortunately no.
+
+<!--
 
 ## Scanning
 
@@ -267,14 +282,15 @@ The OCR itself can be performed without any human supervision.
 As discussed, this is not the case with region detection and post correction, which both seem to be prone for errors that have to be manually corrected in case we want fully usable result.
 Similarly OCR training, described above, is a phase which needs careful examination while the model is being done so that it can be customized to work well.
 
+
 ## Post-correction of the texts
 
+-->
+
 There are some experiences that the OCR resulting text can be corrected to some degree with simple automatic scripts [@arkhangelskiyEtAl2016a].
-This is certainly true.
+This is certainly true, especially with data which is relatively well recognized, although the worst recognized parts should be approached with redoing OCR [@kettunenEtAl2016b].
 I would still be cautious about not having the need for manual post-correction, which although impractical for millions of titles, can still be relatively cost-effective for hundreds or thousands of proofread books in a year.
 Needless to say, already this can produce a very large corpus, as the example of our colleagues in Syktyvkar shows.
-
-## Publishing
 
 Within INEL, the OCR is not a direct goal in itself, but the text extracted from the documents will be associated with its original recording.
 There are also cases where the original recording is lost or was never made, which is the case with older transcriptions.
@@ -299,8 +315,6 @@ I'm certain also wider audience would appreciate the possibility to examine thes
 What I would like to see the most is a set of tools which allow very easy and shallow rendering of XML and middle quality images, instead of building the solution on top of heavy servers and byzantine architectures which demand complex customization to fit the needs of specific projects.
 As I've discussed here, those needs may in reality be more similar than we think.
 The XML files could be even stored in public repositories such as GitHub, which would bring the work more towards actually open and collaborative science.
-
-## Ideal scenario
 
 In an ideal world the OCR model development could be done with Open Source tools for languages which have the following resources:
 
