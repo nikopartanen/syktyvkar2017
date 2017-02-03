@@ -25,24 +25,24 @@ The next logical step after preservation is to bring these materials into common
 Opening this kind of datasets is still in early phase, and many related practices are largely underdeveloped.
 For example, in Scandinavia the libraries have recently offered digitalized materials to the public use, although the focus has been in publications before 1910 [@paakkonenEtAl2016a].
 Within language documentation projects the concept of open data is barely discussed, and the most of the data seems to be behind differently restricted licenses or then with limitations to only academic use.
-In many cases this is needed due the personal privacy issues which are related to the nature of the data collected from private individuals.
-However, in part this must be connected to lack of knowledge and good practices with the licensing and data sharing more generally.
-This is very unfortunate, since incorrectly structured and licensed materials will take considerable future effort and negotiation to get them into active research use.
+In many cases this is needed due the personal privacy issues which are related to the nature of the data collected from human subjects.
+However, in part this must be connected to lack of knowledge and good practices with the licensing and data sharing.
+This is very unfortunate, since incorrectly structured and licensed materials will take considerable future effort and negotiation before they can be taken into active research use.
 
-In order to do provide better usability the content has to be accessible, and with the written documents this refers mainly to texts.
+In order to do provide better usability the content has to be accessible, and with the written documents this refers mainly to text data.
 Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to bring printed and hand written materials into further use.
 OCR aims to produce a *text encoding* from the image data.
 This refers explicitly to detection of individual signs in the text, which can be represented in the resulting document in different ways.
 The current preferred standard would be representation with closely matching Unicode characters, in case those are available.
-The coverage of Unicode has extended continuously, but there are still few dark corners left.
+The coverage of Unicode has extended continuously, but there are still few gaps left.
 However, it is clear that part of the content is in the structure of the text document, which means that simply retrieving the text is only one step.
 In my opinion it is still somewhat unclear what is the ideal format to store this restructured data so that it is most useful for linguists and other researchers.
 There are already available more wider and systematic comparisons of different OCR tools, see for example Tafti et. al. [-@taftiEtAl2016a], but I aim to contribute to the discussion by pointing out particular needs of language documentation, which possibly are relevant for the wider linguistic community as well.
 
 During the last years there have been multiple very important and large digitalization projects, run both by academic institutions and libraries, often in cooperation.
-Some of these, such as [Endangered Archives](http://eap.bl.uk/)(http://eap.bl.uk) ran by the British Library, have focused mainly to audio and photograph mediums.
-Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/)(https://fennougrica.kansalliskirjasto.fi/) and [Komi Kyv](http://komikyv.ru/)(http://komikyv.ru) website maintained in Syktyvkar, are good examples from the systematic digitalization of written resources.
-This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in ways which have never before been possible.
+Some of these, such as [Endangered Archives](http://eap.bl.uk/) (http://eap.bl.uk) ran by the British Library, have focused mainly to audio and photograph mediums.
+Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/) (https://fennougrica.kansalliskirjasto.fi/) and [Komi Kyv](http://komikyv.ru/) (http://komikyv.ru) website maintained in Syktyvkar, are good examples of the systematic digitalization of written resources.
+This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their languages in ways which have never before been possible.
 Since many projects have produced millions of scanned pages, the principal question is how we can use this data.
 By use I refer primarily to the use in scientific research and also would prioritize highly use which makes materials better available for the community of speakers themselves.
 As we are discussing mainly minority language materials, the commercial use is not the most relevant issue.
@@ -53,10 +53,12 @@ It is foreseeable that in the future this will be one of the questions which hav
 In INEL project we have been working with the digitalization of Selkup, Dolgan and Kamas materials.
 In contrary to the projects mentioned earlier, our focus has been primarily in the published fieldwork materials and other representations of spoken primary data on these languages.
 Since INEL is a long term project, the workflows and conventions established now will be extended further into new languages.
-Komi-Permyak and Komi-Yazva will also be included in INEL, which is relevant in the Permic context of this conference as well.
-The texts we work with tend to fall into two distinct categories: hand written manuscripts and published printed transcriptions.
+Komi-Permyak and Komi-Yazva will also be included in INEL later.
+Alongside Komi-Permyak, also Tundra Nenets likely falls into category where the number of available publications is particularly high.
+Indeed, with smaller languages it is likely that the recorded and transcribed materials exceed in size the printed ones, which can be used as one benchmark about the general state of resources in given language.
+The texts we work with in INEL tend to fall into two distinct categories: hand written manuscripts and published printed transcriptions.
 This data is also unusually complex because the transcriptions are usually related into different archival audio recordings, but the relation may not be entirely transparent.
-Currently Daniel Jettka is implementing a graph database as a solution to store interlinked data, which looks like a solution with many good sides to deal with complicated data model inherent with our data. 
+Currently Daniel Jettka is implementing a graph database as a solution to store interlinked data, which looks like a good solution to complicated data model inherent with our data. 
 For example, with some Selkup transcriptions the recordings are apparently different versions from the ones recorded.
 At the same time the same transcriptions may have been published in several publications in somewhat different versions and using various transcription conventions.
 The same recordings may be stored in different formats and copies in various archives.
@@ -65,11 +67,11 @@ All this brings additional layer of complexity to the metadata associated with t
 The situation is similar with digitalization of fieldwork materials on majority of Uralic languages spoken in Russia.
 This is also a very particular case for OCR tools since the scripts used are often not included in available OCR models, the number of diacritics can make the scripts extremely complex and the fonts used may be very customized for specific publications.
 Indeed the variation between the publications may often be so high that it is necessary to question how much effort has to be put into OCR development, if the specific variety is used only on few pages in one publication.
-It seems that in many ways the OCR challenges with printed transcriptions could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, possibly mainly in the volume of the texts (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum).
+It seems that in many ways the OCR challenges with printed transcriptions could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, especially in the volume of the texts (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum).
 In many cases also the copyright questions tend to get very complex with the legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways.
 That said, it seems we are still far away even from solving the copyright issues to a very simple data, so the question should not be made overly complicated in this point.
 
-In INEL we have currently implemented OCR tools only to printed texts, but in principle to extend this into hand written texts will be in some point necessary.
+In INEL we have currently implemented OCR tools only to printed texts, but to extend this into hand written texts will be in some point necessary.
 Since the hand written text recognition is still actively developing field, the choise of software on this domain is narrow.
 One good candidate to take into consideration is [Transkribus](https://transkribus.eu)(https://transkribus.eu), developed in Innsbruck, Austria, but very likely other solutions will still emerge.
 Also here it has to be taken into account that the distinction between hand written and printed is possibly less relevant than the distinction between combining and distinct characters.
