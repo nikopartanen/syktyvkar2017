@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-This paper discusses some experiences and workflows from INEL project (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*)(https://inel.corpora.uni-hamburg.de). 
+This paper discusses some experiences and workflows from [INEL project](https://github.com/nikopartanen/syktyvkar2017/blob/master/partanen2017a.pdf) (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*)(https://inel.corpora.uni-hamburg.de). 
 The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of the German Academies of Sciences and Humanities.
 
 In order to preserve the written cultural heritage, digital preservation is necessary, and there are already good standards for digitalization of books and manuscripts.
@@ -40,8 +40,8 @@ In my opinion it is still somewhat unclear what is the ideal format to store thi
 There are already available more wider and systematic comparisons of different OCR tools, see for example Tafti et. al. [-@taftiEtAl2016a], but I aim to contribute to the discussion by pointing out particular needs of language documentation, which possibly are relevant for the wider linguistic community as well.
 
 During the last years there have been multiple very important and large digitalization projects, run both by academic institutions and libraries, often in cooperation.
-Some of these, such as [Endangered Archives](http://eap.bl.uk/) ran by the British Library, have focused mainly to audio and photograph mediums.
-Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/) and [Komi Kyv](http://komikyv.ru/) website maintained in Syktyvkar, are good examples from the systematic digitalization of written resources.
+Some of these, such as [Endangered Archives](http://eap.bl.uk/)(http://eap.bl.uk) ran by the British Library, have focused mainly to audio and photograph mediums.
+Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/)(https://fennougrica.kansalliskirjasto.fi/) and [Komi Kyv](http://komikyv.ru/)(http://komikyv.ru) website maintained in Syktyvkar, are good examples from the systematic digitalization of written resources.
 This opens entirely new situation for the research on these languages, and also allows the speakers to access this content on their language in ways which have never before been possible.
 Since many projects have produced millions of scanned pages, the principal question is how we can use this data.
 By use I refer primarily to the use in scientific research and also would prioritize highly use which makes materials better available for the community of speakers themselves.
@@ -71,7 +71,7 @@ That said, it seems we are still far away even from solving the copyright issues
 
 In INEL we have currently implemented OCR tools only to printed texts, but in principle to extend this into hand written texts will be in some point necessary.
 Since the hand written text recognition is still actively developing field, the choise of software on this domain is narrow.
-One good candidate to take into consideration is [Transkribus](https://transkribus.eu), developed in Innsbruck, Austria, but very likely other solutions will still emerge.
+One good candidate to take into consideration is [Transkribus](https://transkribus.eu)(https://transkribus.eu), developed in Innsbruck, Austria, but very likely other solutions will still emerge.
 Also here it has to be taken into account that the distinction between hand written and printed is possibly less relevant than the distinction between combining and distinct characters.
 
 # Basics of OCR workflow
