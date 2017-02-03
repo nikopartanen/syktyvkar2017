@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-This paper discusses some experiences and workflows from [INEL project](https://github.com/nikopartanen/syktyvkar2017/blob/master/partanen2017a.pdf) (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*)(https://inel.corpora.uni-hamburg.de). 
+This paper discusses some experiences and workflows from [INEL project](https://github.com/nikopartanen/syktyvkar2017/blob/master/partanen2017a.pdf) (https://inel.corpora.uni-hamburg.de) (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). 
 The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of the German Academies of Sciences and Humanities.
 
 In order to preserve the written cultural heritage, digital preservation is necessary, and there are already good standards for digitalization of books and manuscripts.
@@ -99,8 +99,8 @@ Both of these tasks in almost all cases demands visual comparison between the re
 There are plenty of different tools which offer possibility to manually correct OCR'd text, and virtually all of them have very similar user interfaces.
 The page image is on the left, and the text field on the right, and moving cursor around the text field has some kind of correspondence on top of the image.
 This makes one wonder why so many projects have ended up to the solution to develope new tools for post-correction.
-[Fenno-Ugrica](https://github.com/NatLibFi/ocrui-frontend)(https://github.com/NatLibFi/ocrui-frontend) has their own tool, [Deutches Textarchiv](http://www.deutsches-textarchiv.de/doku/software)(http://www.deutsches-textarchiv.de/doku/softwar) has their own.
-[PoCoTo](http://thorstenv.github.io/PoCoTo/)(http://thorstenv.github.io/PoCoTo) has been developed in CIS Munich within a larger EU project, and uniquely from the others, it seems to have features related to batch correction of systematic mistakes. 
+[Fenno-Ugrica](https://github.com/NatLibFi/ocrui-frontend) (https://github.com/NatLibFi/ocrui-frontend) has their own tool, [Deutches Textarchiv](http://www.deutsches-textarchiv.de/doku/software) (http://www.deutsches-textarchiv.de/doku/software) has their own.
+[PoCoTo](http://thorstenv.github.io/PoCoTo/) (http://thorstenv.github.io/PoCoTo) has been developed in CIS Munich within a larger EU project, and uniquely from the others, it seems to have features related to batch correction of systematic mistakes. 
 Also from this point of view one has to recognize character or word location on the page as an essential part of the OCR result, since it is impossible to imagine a post-correction workflow which would function without this information.
 
 Compared to this, the initial training of an OCR model is very well suited to command line environment, especially for the transparency and reproducibility of the training process.
@@ -114,7 +114,7 @@ Although there are several tools, many of them still tend to lack some features,
 - Lack of search and replace with regular expressions [@mancinelli2016a, 259]
 - Lack of good XML export
 
-The first issue connects to automatization of the proofreading process, since some mistakes are always systematic and could be easily corrected in the correction phase.
+The first issue connects to automatization of the proofreading process, since some mistakes are always systematic and could be easily corrected before manual phase.
 The export format causes a more serious issue, as it connects to post processing and reuse.
 Following attributes would ideally be present in the output format:
 
@@ -128,14 +128,16 @@ Following attributes would ideally be present in the output format:
     - OCR model used (with version)
     - Information about page processing, if that was performed
 
-The format itself is trivial, but some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
-However, often offered formats such as plain text file, Word document or PDF are clearly not satisfactory.
+As a format some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
+However, often offered formats such as plain text file, Word document or PDF are clearly not satisfactory. The National Library of Finland has also developed their own export format which contains ALTO XML, metadata and the text in plain text, and which was created to the need of users who benefit from access to local copies [@paakkonenEtAl2016a].
 
+<!--
 The most problematic of the desired information is the styling, since this is expressed in very complex manner in printed publication.
 By *style* I refer to the settings such as italic or bold font, titles etc.
 I believe some features such as paragraph change can be later analysed from the line positions on the page, and thereby it doesn't belong directly to the OCR result itself.
+-->
 
-At the moment the OCR market is dominated by ABBYY FineReader and Tesseract [@smith2007a].
+At the moment the OCR market is dominated by ABBYY FineReader (https://www.abbyy.com/finereader) and Tesseract (https://github.com/tesseract-ocr/tesseract) [@smith2007a].
 The first is used with good success in many large projects, for example in Fenno-Ugrica collection of Finland's National Library, but it is entirely commercial software which makes it very problematic from perspectives of open science and software.
 Tesseract, and its derivations such as [OCRicola](https://sourceforge.net/projects/ocricola), are entirely open source and highly trainable, but they offer just the very core functionality of OCR recognition and thereby have to be used in integration with different tools, and at least in INEL we haven't found any good combination of tools which could offer a highly reliable and reproduceable workflow.
 
@@ -166,14 +168,14 @@ One demand for this is certainly to stop building a new software in every projec
 In INEL we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep well the paragraph structure and, with some manual maintenance, also page numbering.
 With the texts we have worked on it has been possible to distinguish page numbers as more or less sequantially growing numbers as only items on the line, and the chapter numbers have been on the same line with title or the first line of the text, in any case, not alone.
 However, this kind of definitions are not very generic and also needs continuous manual adjustation.
-The data retrieved this way is aligned with Russian sentences with hunalign-tool, again with some manual supervision, and converted into a Toolbox file with a simple script which transforms the file structure to fit Toolbox demands.
+The data retrieved this way is aligned with Russian sentences using hunalign (https://github.com/danielvarga/hunalign), again with some manual supervision, and converted into a Toolbox file with a simple script which transforms the file structure to fit Toolbox demands.
 This is eventually imported to FLEx, line, chapter and page information being stored on note tier.
 This workflow disregards the page position information, which is suboptimal in every sense, but for now there have not been better alternatives.
 The solution selected in INEL works in careful digitalization of individual texts one by one, but would not be satisfactory in large scale digitalization projects.
 
 ## Basics of OCR model training
 
-OCR model training can be on different levels, and Abbyy and Tesseract in my example cases employ opposite strategies.
+OCR model training can be on different levels, and Abbyy and Tesseract in our use employ opposite strategies.
 This is a matter of level on which the recognition is being performed.
 
     character < character combination < wordform <  morphological model
@@ -181,13 +183,14 @@ This is a matter of level on which the recognition is being performed.
 The Abbyy, as we have used it with minority languages, has been used by us on character and character combination level.
 Since the wordform information is not used at all, there is no interference from the Russian word frequency and character combination information which the software could use with Russian text.
 New combinations can also be trained, which can be especially helpful when teaching Abbyy to recognize rare and new characters which are not in Russian orthography.
-The next step would be to feed from Dolgan corpus to Dolgan Abbyy model, but one factor that makes this complicated is that different publications use different enough scripts that the modeling often has to be done individually for each publication.
+The next step would be to feed from Dolgan corpus to Dolgan Abbyy model, but one factor that makes this complicated is that different publications use different enough scripts and phological interpretations for each language that the modeling often has to be done individually for each publication.
 One benefit from this relatively shallow model is that it does not get mixed up by dialectal variation in the wordforms, as it doesn't look beyond individual characters.
 However, if the model has exact information about all possible wordforms, the recognition quality can possibly be improved even further.
 However, according to Silfverberg and Rueter the word lists may still be superior to morphological analysators [-@silfverbergEtAl2014a].
 It must also be taken into account that more sophisticated model may also struggle more when the text it encounters is less standard.
+In later step the language data will be included better to the model, since in INEL all transcriptions are eventually converted into phoneme level transcription system which is used consistently within the project, and in some cases conversion to the variant used in publications should also be possible, as long as the phonemic level is same.
 
-## Training an Tesseract/OCRicola model
+### Training an Tesseract/OCRicola model
 
 I did rather comprehensive testing of OCRicola and Tesseract in fall 2015, and especially OCRicola offers the opposite approach to what we are now doing with Abbyy.
 Tesseract model training is based to the idea that an example images are generated from an example text and a font.
@@ -205,7 +208,7 @@ Challenges with Tesseract/OCRicola model are related especially to the fonts and
 Tesseract is easy to use and install, but to get all dependencies installed correctly for training new models can be very complex and differs between versions.
 Probably this is not an unusual problem, and the installation is indeed possible and works, but this cannot be under any conditions described as straightforward or unproblematic.
 
-## Training an Abbyy model
+### Training an Abbyy model
 
 In contrary to Tesseract/OCRicola model, Abbyy takes care most of the things by itself without user interference.
 This can be seen as both an up or downside, since it makes the model development entirely non-transparent.
@@ -330,7 +333,7 @@ However, for many of the smaller languages these form a large issue.
 Thereby it is also advisable not to publish corpora with licenses which contain clauses such as No-Derivations, since an OCR model is a derivation of one sort.
 Although it may be largely untested what exactly constitutes as a derivation, I would not start to use such a corpora in this kind of work.
 
-# Challenges for language technology
+## Challenges for language technology
 
 OCR'd texts offer many important tasks for natural language processing.
 First of all, there is the need to transform highly idiosynchronic writing systems into same ideally phoneme level representation.
@@ -348,7 +351,7 @@ The two texts are naturally different, as one variant is not proofread and conta
 However, I believe this is a minor obstacle, and detecting the most similar pages (especially knowing that the following page normally continues the text) should be very doable in immediate future.
 I have not found any existing solutions to this, which again may reflect the immaturity in the use of OCR'd research data in the fields where high quality text output is a necessary or high preference.
 
-# Meeting with language documentation
+## Contribution to language documentation
 
 In corpus linguistics and language technology the texts are usually treated as the target of investigation in themselves.
 When applied to the endangered languages, there is often need to personalize them further and add into metadata information about the writers and translators, among other relevant factors.
