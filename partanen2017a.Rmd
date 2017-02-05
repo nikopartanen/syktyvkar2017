@@ -335,15 +335,16 @@ Although it may be largely untested what exactly constitutes as a derivation, I 
 
 ## Challenges for language technology
 
-OCR'd texts offer many important tasks for natural language processing.
+OCR'd texts pose many forthcoming tasks for natural language processing.
 First of all, there is the need to transform highly idiosynchronic writing systems into same ideally phoneme level representation.
 Moreover, OCR'd text is often not split neatly to individual words, but somewhat specific form of tokenization has to be employed.
-In the same vein one could also ask for detokenization, since the result of OCR is often not really the sentences, but not really the word tokens either.
-It is something in between, and the ready tools may not be adjusted to work exactly with that.
+In the same vein one could also ask for reliable detokenization, since the result of OCR is often not really the sentences, but not really the word tokens either.
+The resulting text is in many ways complex, and the ready tools may not be adjusted to work exactly with that.
 
-Mere written text often needs some kind of a morphological analysis in order to be more usable for linguistic analysis.
+The written text often needs some kind of a morphological analysis in order to be more usable for linguistic analysis.
 Thereby applying different tools to this end is highly desiderable.
-It can also be mentioned that many texts are attractive targets for named entity recognition (NER) since they often cover repeatedly same prominent historical events in different languages.
+For example, with digitalized Komi-Zyrian and Saami materials GiellaTekno tools have already proven very useful, and maybe something similar could be applied later also to INEL corpora.
+It can also be mentioned that many texts are attractive targets for named entity recognition (NER) since they often cover repeatedly same prominent historical events in different languages and repeat same historical figures.
 
 One particularly relevant tiny task I can foresee is the automatic matching of recognized text with the original pages.
 This can be done by comparing automatically the proofread text masses with the XML output with word coordinate information.
