@@ -188,7 +188,7 @@ The solution selected in INEL works for the careful digitalization of individual
 
 ## OCR model training
 
-OCR model training can be carried out at different levels, and the programs tested, Abbyy and Tesseract, employ opposite strategies.
+OCR model training can be carried out at different levels<!--, and the programs tested, Abbyy and Tesseract, employ opposite strategies-->.
 <!--This is a matter of the level on which the recognition is being performed.
 
     character < character combination < wordform <  morphological model
@@ -196,9 +196,9 @@ OCR model training can be carried out at different levels, and the programs test
 Abbyy<!--, as we have used it with minority languages,--> has been used by us on the character and character combination level.
 Since the wordform information is not used at all, there is no interference from the Russian word frequency and character combination information that the software could use with Russian text.
 New combinations can also be trained, which can be especially helpful when teaching Abbyy to recognize rare and new characters that are not used in Russian orthography.
-The next step would be to feed the manually corrected word forms from the Dolgan corpus to the Dolgan Abbyy model, but one factor that makes this complicated is that different publications use different enough scripts and phological interpretations for each language, so the modeling often has to be done individually for each publication.
-One benefit of this relatively shallow model is that it does not get mixed up by dialectal variation in the word forms, as it does not look beyond individual characters.
-However, if the model has exact information about all possible word forms, the recognition quality can possibly be improved even further.
+The next step would be to feed the manually corrected word forms from the Dolgan corpus to the Dolgan Abbyy model<!--, but one factor that makes this complicated is that different publications use different enough scripts and phological interpretations for each language, so the modeling often has to be done individually for each publication-->.
+One benefit of this relatively shallow model is that it does not get mixed up by dialectal variation in the word forms<!--, as it does not look beyond individual characters-->.
+If the model has exact information about all possible word forms, the recognition quality can possibly be improved even further.
 However, according to Silfverberg and Rueter, word lists may still be superior to morphological analyzers [-@silfverbergEtAl2014a].
 It must also be taken into account that a more sophisticated model may also struggle more when the text it encounters is less standard.
 <!--In a later phase, the language data will be included better in the model, since all transcriptions in INEL will eventually be converted to a phoneme-level transcription system that is used consistently within the project, and in some cases conversion to the variant used in publications should also be possible, as long as the phonemic level is same.
@@ -207,11 +207,11 @@ It must also be taken into account that a more sophisticated model may also stru
 
 -->
 
-I carried out rather comprehensive testing of OCRicola and Tesseract in fall 2015, and especially OCRicola offers the opposite approach from what we are now doing with Abbyy.
+<!--I carried out rather comprehensive testing of OCRicola and Tesseract in fall 2015, and especially OCRicola offers the opposite approach from what we are now doing with Abbyy.-->
 <!-- Model training in Tesseract is based on the idea that example images are generated from an example text and a font.-->
 OCRicola is a software built on the basis of Tesseract and has most of the same functionalities.
 The main difference between the tools is that OCRicola is able to use a finite state transducer (HFST) to generate the word forms used in recognition.
-In theory this approach is superior to corpus-based input, since the morphological analyzer is also able to generate forms that are never present in the corpus but may occur in a new text.
+In theory<!-- this approach is superior to corpus-based input, since--> the morphological analyzer is also able to generate forms that are never present in the corpus but may occur in a new text.
 <!-- One issue related to this is that OCRicola was split from and older Tesseract version, and currently we are already in [Tesseract 4.00](https://github.com/tesseract-ocr/tesseract).
 As these are both open source projects, this is not necessarily a problem.
 However, for example, the newest Tesseract already includes a neural network subsystem as [a new type of textline recognizer](https://github.com/tesseract-ocr/tesseract/wiki/NeuralNetsInTesseract4.00).
@@ -266,7 +266,7 @@ Especially with old typefaces or handwritten manuscripts, the matter of interpre
 
 There are other good discussions about the steps of the OCR process; for example, Holley [-@holley2009a] goes through it step by step.
 Although that description is some years old, the principle has not changed, and [table 1](http://www.dlib.org/dlib/march09/holley/03holley.html) in her paper provides a good overview of all necessary phases (http://www.dlib.org/dlib/march09/holley/03holley.html).
-What I would mainly like to emphasize here, is that it is somewhat questionable how well the current tools actually store information about the entire workflow.
+<!--What I would mainly like to emphasize here, is that it is somewhat--> I personally still find it questionable how well the current tools actually store information about the entire workflow.
 The measure of this would be whether we are able to associate an arbitrary token in the final recognized text with the matching coordinates in the original manuscript, microfilm or whatever the source has been.
 At least in regard to INEL workflows, the answer is unfortunately no.
 
