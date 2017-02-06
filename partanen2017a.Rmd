@@ -29,31 +29,31 @@ Digital preservation has many advantages for preserving written cultural heritag
 However, digitalization increases the discoveribility and the possibilities for reuse of these materials.
 <!--There are already good standards for the digitalization of books and manuscripts.
 Archiving projects can easily justify concentrating only on the preservation of legacy materials, referring with this mainly to digitalization and metadata-related cataloging.-->
-After digitalization the next logical step after preservation is to bring these materials into common and scientific use.
-Opening these kinds of datasets is still in its early phases, and many related practices are largely underdeveloped.
-For example, in Scandinavia, public and national libraries have recently begun to offer digitalized materials for public use, although the focus has been mainly on publications before 1910 [@paakkonenEtAl2016a] (http://www.dlib.org/dlib/july16/paakkonen/07paakkonen.html).
-Within language documentation projects, the concept of open data is barely discussed, and the most of the data seems to be behind variously restricted licenses or, alternatively, with limitations to only academic use.
+The next step is to bring these materials into common and scientific use.
+Opening these datasets is still in its early phases, and many related practices are underdeveloped.
+In Scandinavia, public and national libraries have recently begun to offer digitalized materials for public use, although the focus has been mainly on publications before 1910 [@paakkonenEtAl2016a] (http://www.dlib.org/dlib/july16/paakkonen/07paakkonen.html).
+Within language documentation projects, the concept of open data is barely discussed, and the most of the data seems to be behind variously restricted licenses or with limitations to only academic use.
 <!--In many cases this is needed due to personal privacy issues related to the nature of data collected from human subjects.
 However, in part, this must also be connected to a lack of knowledge and good practices regarding licensing and data sharing.-->
-This is very unfortunate, since incorrectly structured and licensed materials will require considerable future effort and negotiation before they can be taken into active research use.
+This is unfortunate, since incorrectly structured and licensed materials will require considerable future effort and negotiation before they can be taken into active research use.
 
 In order to do enable better usability, content must be accessible.
-In the case of written documents, this refers mainly to text data.
-Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to bring printed and handwritten materials into further use.
+In the case of written documents, this refers mainly to original text data.
+Optical Character Recognition (henceforth OCR) tools are irreplaceable in efforts to digitalize these resources. <!--bring printed and handwritten materials into further use.-->
 <!-- OCR aims to produce *text encoding* from image data.
 This refers explicitly to the detection of individual signs in the text, which can be represented in the resulting document in different ways.-->
 <!-- The current preferred standard would be representation with closely matching Unicode characters, provided that those are available.
 The coverage of Unicode has been increasing continuously, but there are still a few remaining gaps.
 However, it is clear that part of the content is in the structure of the text document, which means that simply retrieving the text is only one step. -->
-In my opinion, it is still somewhat unclear what is the ideal format for storing this restructured data so that it is most useful for linguists and other researchers.
+<!--In my opinion, it is still somewhat unclear what is the ideal format for storing this restructured data so that it is most useful for linguists and other researchers.-->
 There are already broader and more systematic comparisons of different OCR tools available; see, for example, Tafti et. al. [-@taftiEtAl2016a], but I aim to contribute to the discussion by pointing out certain particular needs of language documentation, which may be relevant for the wider linguistic community as well.
 
-During the last years, there have been multiple large digitalization projects run by both academic institutions and libraries<!--, often in cooperation with one another-->.
+<!--During the last years, t-->There have been multiple large digitalization projects run by both academic institutions and libraries<!--, often in cooperation with one another-->.
 Some of these, such as [Endangered Archives](http://eap.bl.uk/) (http://eap.bl.uk) run by the British Library, have focused mainly on audio and photographic media.
 Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/) (https://fennougrica.kansalliskirjasto.fi/) and the [Komi Kyv](http://komikyv.ru/) (http://komikyv.ru) website maintained in Syktyvkar, are good examples of the systematic digitalization of written resources.
 <!-- This opens up an entirely new situation for research on these languages, and also allows the speakers to access content on and in their languages in ways that have never before been possible. -->
 Since many projects have produced vast quantity of scanned pages, the principal question is how we can use this data.
-By use, I refer primarily to the use in scientific research and would also highly prioritize such use which makes the materials better available to the community of speakers themselves.
+<!--By use, I refer primarily to the use in scientific research and would also highly prioritize such use which makes the materials better available to the community of speakers themselves.-->
 <!-- As we are discussing mainly minority language materials, commercial use is not the most relevant issue.
 Also from this perspective, working primarily with data that can be released with permissive licenses is the most advisable approach.-->
 <!--Unfortunately, very few projects have adopted clear licenses for the data, with Fenno-Ugrica being a rare exception in that it has decided to use Public Domain.
@@ -61,7 +61,7 @@ It is foreseeable that in the future this will be one of the questions that need
 
 In the INEL project, we have been working with the digitalization of Selkup, Dolgan and Kamas materials.
 <!--In contrast to the projects mentioned earlier, --> Our focus has been primarily on published fieldwork materials and other representations of spoken primary data for these languages.
-Since INEL is a long-term project, the workflows and conventions established now will be extended further into work on new languages later.
+<!--Since INEL is a long-term project, the workflows and conventions established now will be extended further into work on new languages later.-->
 <!-- At later stages of the project, Komi-Permyak and Komi-Yazva will also be included.-->
 Within INEL languages, alongside Komi-Permyak, Tundra Nenets also likely falls into the category where the number of available publications is very high.
 With smaller languages, it is likely that the recorded and transcribed materials exceed the printed ones in size; generally speaking, the ratio of these two can be used as one way to estimate the usage situation or vitality of the language.
