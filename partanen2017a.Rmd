@@ -1,9 +1,11 @@
 ---
-title: "Challenges in OCR today: experiences from INEL"
+title: 'Challenges in OCR today: experiences from INEL'
 author: "Niko Partanen"
 date: "31 January 2017"
-output: 
-  pdf_document: 
+output:
+  word_document:
+    toc: no
+  pdf_document:
     highlight: tango
     latex_engine: xelatex
     toc: no
