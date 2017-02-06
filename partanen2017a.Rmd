@@ -51,7 +51,7 @@ Within the INEL project [@wagner-nagyEtAl2015a] we have done a wide-ranging eval
 
 <!--During the last years, t-->There have been multiple large digitalization projects run by both academic institutions and libraries<!--, often in cooperation with one another-->.
 Some of these, such as [Endangered Archives](http://eap.bl.uk/) (http://eap.bl.uk) run by the British Library, have focused mainly on audio and photographic media.
-Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/) (https://fennougrica.kansalliskirjasto.fi/) and the [Komi Kyv](http://komikyv.ru/) (http://komikyv.ru) website maintained in Syktyvkar, are good examples of the systematic digitalization of written resources.
+Others, namely [Fenno-Ugrica](https://fennougrica.kansalliskirjasto.fi/) (https://fennougrica.kansalliskirjasto.fi/) and the [Komi Kyv](http://komikyv.ru/) (http://komikyv.ru) maintained in Syktyvkar, are good examples of the systematic digitalization of written resources.
 <!-- This opens up an entirely new situation for research on these languages, and also allows the speakers to access content on and in their languages in ways that have never before been possible. -->
 Since many projects have produced vast quantity of scanned pages, the principal question is how we can use this data.
 <!--By use, I refer primarily to the use in scientific research and would also highly prioritize such use which makes the materials better available to the community of speakers themselves.-->
@@ -75,10 +75,10 @@ The same recordings may be stored in different formats and copies in various arc
 <!-- All of these factors bring an additional layer of complexity to the metadata associated with the primary data.-->
 
 <!--The situation is similar when it comes to the digitalization of fieldwork materials on the majority of Uralic languages spoken in Russia.-->
-This is also a very particular case for OCR tools, since the scripts used are often not included in available OCR models, the number of diacritics (possible added by hand) can make the scripts extremely complex, and the fonts used may be highly customized<!-- to suit specific publications-->.
+This is also a very particular case for OCR, since the scripts used are often not included in available models, the number of diacritics (possible added by hand) can make the scripts extremely complex, and the fonts used may be highly customized<!-- to suit specific publications-->.
 <!--Indeed, the variation between publications is often so high that it is necessary to question how much effort should be put into OCR development if the specific variety is used only for few pages in one publication.-->
 <!--It seems that in many ways, -->The OCR challenges <!--related to printed transcriptions -->could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, especially concerning the volume of the texts<!-- (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum)-->.
-<!-- In many cases--> The copyright questions also get very complex when it comes to legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways, and may be next to impossible to reconstruct.
+<!-- In many cases--> The copyright questions also get very complex when it comes to legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways, and may be impossible to reconstruct.
 That said, it seems we are still far away even from solving the copyright issues involved with a very simple set of data, so the question should not be made overly complicated at this point.
 
 <!-- In INEL, we have so far implemented OCR tools only for printed texts, but it will be necessary at some point to extend this to include handwritten texts as well.
@@ -93,7 +93,6 @@ Most of the time, the first step after digitalization is to find some solutions 
 <!--It seems to me that many of these tasks have not been commonly discussed, which is why I wish to present some of my thoughts on the topic in this paper.-->
 <!--As far as I see, providing the data itself is just one part in getting the data into wider use in the research community.-->
 <!-- Although not new research in a strict sense, this paper aims to introduce several concepts to the discussion concerning how OCR tools are evaluated and chosen.-->
-
 <!--Moreover, it must be recognized that mere OCR of the text is often not enough in order to provide materials ready for linguistic analysis, as further restructuring is necessary.
  Often it adds value to automatically extract more information than just the text, as many documents contain systematic information about the author, location and time, among many other metadata variables.
 Information about the position and layout of characters, lines and words on pages is also among such data.-->
@@ -101,7 +100,7 @@ Information about the position and layout of characters, lines and words on page
 As a more technical note, the recognition confidence for individual characters could also be very useful for further post-processing.
 The significance of this naturally increases with languages that have a less mature OCR environment.
 This paper identifies various problems and, as far as possible, offers alternatives are offered and solutions envisioned. -->
-Although we can often rely on command line tools, there are tasks for which a graphical user interface is particularly suitable.
+<!--Although we can often rely on command line tools, t-->There are specific tasks for which a graphical user interface is particularly suitable.
 <!--As mentioned, o-->One of these is the post-processing of OCR results.
 Another is manual correction of the detected text regions<!--, since their correct definition is necessary for succesful OCR-->.
 Both of these tasks <!--in almost all cases -->require a visual comparison between the recognized text and the original image.
@@ -152,14 +151,14 @@ I believe some features such as paragraph change can be later analysed from the 
 
 At the moment, the OCR market is dominated by ABBYY FineReader (https://www.abbyy.com/finereader) and Tesseract (https://github.com/tesseract-ocr/tesseract) [@smith2007a].
 The former is <!-- used with good success in many large projects, for example in the Fenno-Ugrica collection of Finland's National Library, but it is-->entirely commercial software, which makes it very problematic from the perspectives of open science and software.
-Tesseract, and its derivations such as [OCRicola](https://sourceforge.net/projects/ocricola), are open source and highly trainable, but they offer only the core functionality of OCR recognition and thereby must be used in conjunction with other tools, and, at least in INEL, we have not yet found a satisfactory combination<!-- of tools that could offer a highly reliable and reproduceable workflow-->.
+Tesseract, and its derivations such as [OCRicola](https://sourceforge.net/projects/ocricola), are open source, but they offer only the core functionality of OCR recognition and thereby must be used in conjunction with other tools, and, at least in INEL, we have not yet found a satisfactory combination<!-- of tools that could offer a highly reliable and reproduceable workflow-->.
 
 The main problem with ABBYY-based solutions is that the two versions of this program, Desktop and Engine, differ very greatly from one another and it is not possible to combine their functionalities.
 One is used through a graphical user interface, and the Engine version is meant to be used in more automatized manner from the command line.
 The main functionality that Abbyy Desktop lacks is XML export.
 This means there is no export format that would directly store the page position information.
 However, in the Desktop version, it is possible to train new language models.
-I will cover this more in detail below, but the problem is that the models trained in Abbyy Desktop cannot be used in Abbyy Engine, which would have needed XML export.
+<!--I will cover this more in detail below, but t-->The problem is that the models trained in Abbyy Desktop cannot be used in Abbyy Engine, which would have needed XML export.
 <!-- In addition, it is certain that many users would not want to rely on the desktop environment, but would like to automatize their work in different ways, which in principle could be done with Abbyy Engine.-->
 <!-- However, -->With rare scripts and endangered languages, the current language models are highly insufficient and some additional training is necessary in order to achieve a satisfactory output.
 It would already be a half-way solution to be able to use the models trained in Abbyy Desktop also in Abbyy Engine. 
