@@ -23,7 +23,7 @@ In order to preserve the written cultural heritage, digital preservation is nece
 The archiving projects can easily justify concentrating only to preservation of legacy materials, referring with this mainly to digitalization and metadata related catalogization.
 The next logical step after preservation is to bring these materials into common and scientific use.
 Opening this kind of datasets is still in early phase, and many related practices are largely underdeveloped.
-For example, in Scandinavia the libraries have recently offered digitalized materials to the public use, although the focus has been in publications before 1910 [@paakkonenEtAl2016a].
+For example, in Scandinavia the libraries have recently offered digitalized materials to the public use, although the focus has been in publications before 1910 [@paakkonenEtAl2016a] (http://www.dlib.org/dlib/july16/paakkonen/07paakkonen.html).
 Within language documentation projects the concept of open data is barely discussed, and the most of the data seems to be behind differently restricted licenses or then with limitations to only academic use.
 In many cases this is needed due the personal privacy issues which are related to the nature of the data collected from human subjects.
 However, in part this must be connected to lack of knowledge and good practices with the licensing and data sharing.
@@ -128,8 +128,10 @@ Following attributes would ideally be present in the output format:
     - OCR model used (with version)
     - Information about page processing, if that was performed
 
-As a format some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would be similarly easy.
-However, often offered formats such as plain text file, Word document or PDF are clearly not satisfactory. The National Library of Finland has also developed their own export format which contains ALTO XML, metadata and the text in plain text, and which was created to the need of users who benefit from access to local copies [@paakkonenEtAl2016a].
+As a format some kind of an XML seems to be the current standard, although expressing same information in other formats such as JSON would also be unproblematic.
+However, often offered formats such as plain text file, Word document or PDF are clearly not satisfactory. 
+The National Library of Finland has also developed their own export format which contains ALTO XML, metadata and the text in plain text, and which was created to the need of users who benefit from access to local copies [@paakkonenEtAl2016a] (http://www.dlib.org/dlib/july16/paakkonen/07paakkonen.html).
+It can be expected that new solutions to distribute this kind of data will emerge, since the users certainly will have need to download the data locally and to update it with newest resources when they are added.
 
 <!--
 The most problematic of the desired information is the styling, since this is expressed in very complex manner in printed publication.
@@ -246,8 +248,8 @@ More rare and more subjective to reading and interpretation the text is, more va
 In this sense OCR is ultimately just an attempt to claim that on these pixels, or on these coordinates on the original page, we have representations of these specific characters.
 Especially with old typefaces or handwritten manuscripts the matter of interpretation tends to become more significant.
 
-There are other good discussions about the steps in OCR process, for example Holley [-@holley2009a] goes it through step by step. 
-The table 1 in her paper presents very well all needed phases.
+There are other good discussions about the steps in OCR process, for example Holley [-@holley2009a] goes it through step by step.
+Although that description is some years old, the principle has not changed, and the [table 1](http://www.dlib.org/dlib/march09/holley/03holley.html) in her paper presents well all needed phases (http://www.dlib.org/dlib/march09/holley/03holley.html).
 What I would mainly want to emphasize here, is that it is somewhat questionable how well the current tools actually store information about what exactly has been done in which point.
 The measure of this would be whether we are able to associate an arbitrary token in the final recognized text with the matching coordinates in the original manuscript, microfilm or whatever the source has been.
 At least in regard to INEL workflows the answer is unfortunately no.
@@ -292,8 +294,8 @@ Similarly OCR training, described above, is a phase which needs careful examinat
 
 -->
 
-There are some experiences that the OCR resulting text can be corrected to some degree with simple automatic scripts [@arkhangelskiyEtAl2016a].
-This is certainly true, especially with data which is relatively well recognized, although the worst recognized parts should be approached with redoing OCR [@kettunenEtAl2016b].
+There are some experiences that the OCR resulting text can be corrected to some degree already with simple ngram-based post-processing [@arkhangelskiyEtAl2016a].
+This is certainly true, especially with data which is relatively well recognized, although the worst recognized parts should probably be approached with redoing OCR [@kettunenEtAl2016b].
 I would still be cautious about not having the need for manual post-correction, which although impractical for millions of titles, can still be relatively cost-effective for hundreds or thousands of proofread books in a year.
 Needless to say, already this can produce a very large corpus, as the example of our colleagues in Syktyvkar shows.
 
