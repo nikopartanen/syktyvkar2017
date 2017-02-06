@@ -158,9 +158,9 @@ One is used through a graphical user interface, and the Engine version is meant 
 The main functionality that Abbyy Desktop lacks is XML export.
 This means there is no export format that would directly store the page position information.
 However, in the Desktop version, it is possible to train new language models.
-<!--I will cover this more in detail below, but t-->The problem is that the models trained in Abbyy Desktop cannot be used in Abbyy Engine, which would have needed XML export.
+<!--I will cover this more in detail below, but t-->The problem is that the models trained in Abbyy Desktop cannot be used in Abbyy Engine<!--, which would have needed XML export-->.
 <!-- In addition, it is certain that many users would not want to rely on the desktop environment, but would like to automatize their work in different ways, which in principle could be done with Abbyy Engine.-->
-<!-- However, -->With rare scripts and endangered languages, the current language models are highly insufficient and some additional training is necessary in order to achieve a satisfactory output.
+<!-- However, -->With rare scripts and endangered languages, the current language models are insufficient and some additional training is necessary in order to achieve a good output.
 It would already be a half-way solution to be able to use the models trained in Abbyy Desktop also in Abbyy Engine. 
 
 Why Abbyy Desktop does not have an XML export function is certainly a valid question.
@@ -170,7 +170,7 @@ However, after using Abbyy for a longer while, I have begun to suspect that ther
 Could it be that even Abbyy does not know how to store user-edited position information?
 When a user edits a text in Abbyy, there are moments where a word entirely loses its highlighting, as if the software would not have information about its position any longer.
 There are similar problems with the Revizor editor developed by National Library of Finland in the Fenno-Ugrica project.
-In Revizor, the information is usually kept, but especially at the line boundaries the program seems to lose its information about which words were originally on which line.
+<!--In Revizor, the information is usually kept, but e-->Especially at the line boundaries the program seems to lose its information about the correct line<!--which words were originally on which line-->.
 This all signals that is must be extremely difficult to store word position information in user-edited text.
 The assumption is very logical in the sense that the user can easily copy and paste text around, delete some words and retype them, and somehow the software would still need to keep track of positions.
 If the task is too difficult for even the industry leader, we may in deeper trouble than we thought, as it is unlikely that smaller open source projects could reinvent this function.
@@ -178,21 +178,21 @@ If the task is too difficult for even the industry leader, we may in deeper trou
 I remain optimistic that in the longer run, the open source community will emerge as the winner.
 One demand for this is certainly to stop building a new software for every project and cooperate more between different involved parties.
 
-In INEL, we are currently working through Abbyy Desktop plain text file and HTML exports, which both do a good job of keeping the paragraph structure and page numbering.
-With the texts we have worked on, it has been possible to distinguish page numbers as more-or-less sequentially growing numbers that are the only items on the line, and chapter numbers as those that are on the same line as the title or the first line of the text; in any case, not alone.
-However, these kinds of definitions are not very generic and also require continuous manual adjustation.
+In INEL, we are currently working through Abbyy Desktop plain text file and HTML exports, which both keep the paragraph structure and page numbering.
+<!--With the texts we have worked on, i-->It has been possible to distinguish page numbers as sequentially growing numbers that are the only items on the line, and chapter numbers as those that are on the same line as the title or the first line of the text; in any case, not alone.
+However, these definitions are not very generic and also require manual adjustation.
 The data retrieved this way is aligned with Russian sentences using hunalign (https://github.com/danielvarga/hunalign), again with some manual supervision, and converted into a Toolbox file with a simple script that transforms the file structure to fit Toolbox demands.
 This is eventually imported into FLEx, with line, chapter and page information being stored on the note tier.
-This workflow disregards the page position information, which is suboptimal in every sense<!--, but for now there has not been a better alternative-->.
+<!--This workflow disregards the page position information, which is suboptimal in every sense, but for now there has not been a better alternative-->.
 The solution selected in INEL works for the careful digitalization of individual texts one by one, but would not be satisfactory for use on large scale digitalization projects.
 
 ## OCR model training
 
 OCR model training can be carried out at different levels, and the programs tested, Abbyy and Tesseract, employ opposite strategies.
-This is a matter of the level on which the recognition is being performed.
+<!--This is a matter of the level on which the recognition is being performed.
 
     character < character combination < wordform <  morphological model
-
+-->
 Abbyy<!--, as we have used it with minority languages,--> has been used by us on the character and character combination level.
 Since the wordform information is not used at all, there is no interference from the Russian word frequency and character combination information that the software could use with Russian text.
 New combinations can also be trained, which can be especially helpful when teaching Abbyy to recognize rare and new characters that are not used in Russian orthography.
@@ -403,7 +403,7 @@ When the books are compared, the texts are immediately useful, since they share 
 That said, matching the sentences semi-automatically is rewarding and fast enough that doing it manually for individual books is entirely feasible.
 Recently also a corpus of movie subtitles has been compiled ([ParTy](http://www.natalialevshina.com/corpus.html) (http://www.natalialevshina.com/corpus.html) by Natalia Levshina), but since that data comes with matching timecodes, the task of alignment is very different.-->
 
-There are also resources that are parallel in less obvious ways.
+Some resources are parallel in less obvious ways.
 There are historical events that have been covered in every newspaper in the Soviet Union and beyond.
 These are not parallel sentences as such, but still the texts are thematically linked in very intriguing ways.
 As mentioned, applying tools such as named entity recognition to this kind of data could be very interesting<!-- for both language documentation and language technology, as well as for ordinary users and wider research in related fields such as anthropology-->.
