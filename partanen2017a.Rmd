@@ -1,12 +1,12 @@
 ---
-title: "Challenges in OCR today: INEL experiences"
+title: "Challenges in OCR today: experiences from INEL"
 author: "Niko Partanen"
 date: "31 January 2017"
 output: 
   pdf_document: 
     highlight: tango
     latex_engine: xelatex
-    toc: yes
+    toc: no
 bibliography: bibliography.bib
 ---
 
@@ -304,7 +304,7 @@ Thereby there has to be relatively close connection between the original text do
 The currently used XML format in INEL is the one produced by [EXMARaLDA](http://exmaralda.org/en/).
 The tools within EXMARaLDA are mainly meant for work done with spoken language data, but we have had good experiences in using it also with the written data.
 The use of tools like these is inevitable since we cannot store in plain text files all the further annotations we want to provide.
-In [Hamburger Zentrum für Sprachkorpora](https://corpora.uni-hamburg.de) we have already a long practice to publish online different visualizations for spoken data (see Demo corpus on the HZSK website).
+In [Hamburger Zentrum für Sprachkorpora](https://corpora.uni-hamburg.de) we have already a long practice to publish online different visualizations for spoken data (see [Demo corpus](https://corpora.uni-hamburg.de/drupal/de/islandora/object/spoken-corpus:demo) on the HZSK website (https://corpora.uni-hamburg.de/drupal/de/islandora/object/spoken-corpus:demo)).
 During 2016 we have also tested different visualizations for interlinearized text which contains no multimedia, and also for this there are clearly many good options.
 
 Publishing the texts is naturally much more simple when there are no annotations.
