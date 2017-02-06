@@ -18,14 +18,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-This paper discusses some experiences and workflows from the [INEL project](https://github.com/nikopartanen/syktyvkar2017/blob/master/partanen2017a.pdf) (https://inel.corpora.uni-hamburg.de) (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"*). 
+This paper discusses some experiences and workflows from the [INEL project](https://github.com/nikopartanen/syktyvkar2017/blob/master/partanen2017a.pdf) (https://inel.corpora.uni-hamburg.de) (*"Grammatiken, Korpora und Sprachtechnologie für Indigene nordeurasische Sprachen"* (Infrastructure for Indigenous Northern Eurasian Languages)). 
 The long-term project is funded within the framework of the Academies’ Programme, which is coordinated by the Union of German Academies of Sciences and Humanities.
+The project was initiated by Prof. Dr. Beáta Wagner-Nagy (UHH, Institute for Finno-Ugric/Uralic Studies, main applicant), Dr. Michael Rießler (Scandinavian Seminar, University of Freiburg) and the management of HZSK (Hanna Hedeland and Timm Lehmberg).
+The INEL project focuses on languages from two language families: Uralic (Selkup, Kamas, Nenets and Komi) and Altaic (Dolgan, Evenki and Siberian Tatar).
+It also focuses on Ket, an isolate language.
 
-Digital preservation is necessary for the preservation of written cultural heritage, and there are already good standards for the digitalization of books and manuscripts.
+Digital preservation has many advantages for the preservation of written cultural heritage, although not a necessity, as the paper has also proven itself as a long-term medium.
+However, digitalization increases the discoveribility and the possibilities for reuse of these materials.
+There are already good standards for the digitalization of books and manuscripts.
 Archiving projects can easily justify concentrating only on the preservation of legacy materials, referring with this mainly to digitalization and metadata-related cataloging.
 The next logical step after preservation is to bring these materials into common and scientific use.
 Opening these kinds of datasets is still in its early phases, and many related practices are largely underdeveloped.
-For example, in Scandinavia, libraries have recently begun to offer digitalized materials for public use, although the focus has been mainly on publications before 1910 [@paakkonenEtAl2016a] (http://www.dlib.org/dlib/july16/paakkonen/07paakkonen.html).
+For example, in Scandinavia, public and national libraries have recently begun to offer digitalized materials for public use, although the focus has been mainly on publications before 1910 [@paakkonenEtAl2016a] (http://www.dlib.org/dlib/july16/paakkonen/07paakkonen.html).
 Within language documentation projects, the concept of open data is barely discussed, and the most of the data seems to be behind variously restricted licenses or, alternatively, with limitations to only academic use.
 In many cases this is needed due to personal privacy issues related to the nature of data collected from human subjects.
 However, in part, this must also be connected to a lack of knowledge and good practices regarding licensing and data sharing.
@@ -60,17 +65,17 @@ Alongside Komi-Permyak, Tundra Nenets also likely falls into the category where 
 Indeed, with smaller languages, it is likely that the recorded and transcribed materials exceed the printed ones in size; generally speaking, the ratio of these two can be used as one way to estimate the usage situation or vitality of the language.
 The texts we work with in INEL tend to fall into two distinct categories: handwritten manuscripts and published printed transcriptions.
 This data is also unusually complex because the transcriptions are usually related to various archival audio recordings, but the relation may not be entirely transparent.
-Daniel Jettka is currently implementing a graph database as a solution for storing interlinked data, and this looks like a good solution for the complicated data model inherent to our data. 
+A colleague in INEL technical team, Daniel Jettka, is currently implementing a graph database as a solution for storing interlinked data, and this looks like a good solution for the complicated data model inherent to our data. 
 For example, in the case of some Selkup transcriptions, the recordings available are apparently different versions from those on which the existing transcriptions are based.
 At the same time, the same transcriptions may have been published in several publications in somewhat different versions and using various transcription conventions.
 The same recordings may be stored in different formats and copies in various archives.
 All of these factors bring an additional layer of complexity to the metadata associated with the primary data.
 
 The situation is similar when it comes to the digitalization of fieldwork materials on the majority of Uralic languages spoken in Russia.
-This is also a very particular case for OCR tools, since the scripts used are often not included in available OCR models, the number of diacritics can make the scripts extremely complex, and the fonts used may be highly customized to suit specific publications.
+This is also a very particular case for OCR tools, since the scripts used are often not included in available OCR models, the number of diacritics (possible added by hand over) can make the scripts extremely complex, and the fonts used may be highly customized to suit specific publications.
 Indeed, the variation between publications is often so high that it is necessary to question how much effort should be put into OCR development if the specific variety is used only for few pages in one publication.
 It seems that in many ways, the OCR challenges related to printed transcriptions could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, especially concerning the volume of the texts (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum).
-In many cases the copyright questions also tend to get very complex when it comes to legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways.
+In many cases the copyright questions also tend to get very complex when it comes to legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways, and may be then next to impossible to figure out.
 That said, it seems we are still far away even from solving the copyright issues involved with a very simple set of data, so the question should not be made overly complicated at this point.
 
 In INEL, we have so far implemented OCR tools only for printed texts, but it will be necessary at some point to extend this to include handwritten texts as well.
@@ -146,6 +151,7 @@ The former is used with good success in many large projects, for example in the 
 Tesseract, and its derivations such as [OCRicola](https://sourceforge.net/projects/ocricola), are entirely open source and highly trainable, but they offer only the very core functionality of OCR recognition and thereby must be used in conjunction with different tools, and, at least in INEL, we have not yet found a good combination of tools that could offer a highly reliable and reproduceable workflow.
 
 The main problem with ABBYY-based solutions is that the two versions of this program, Desktop and Engine, differ very greatly from one another and it is not possible to combine their functionalities.
+One is used through a graphical user interface, and the Engine version is meant to be used in more automatized manner from the command line.
 The main functionality that Abbyy Desktop lacks is XML export.
 This means there is no export format that would directly store the page position information.
 However, in the Desktop version, it is possible to train new language models.
@@ -360,8 +366,8 @@ I have not found any existing solutions to this, which again may reflect the imm
 
 In corpus linguistics and language technology, the texts are usually treated as the target of investigation in themselves.
 When applied to the endangered languages, there is often a need to personalize them further and add into metadata information about the writers and translators, among other relevant details.
-Instead of variables such as publishing time and place, there is the obvious need to know writer's birth time and birth place.
-These already tell quite a bit about the possible native dialect of the writer, which again can be one way to explain idiosynhcronic features of individual texts.
+Instead of variables such as publishing time and place, there is the obvious need to know writer's date of birth and place of birth.
+These already tell quite a bit about the possible native dialect of the writer, which again can be one way to explain idiosynchronic features of individual texts.
 Often this kind of information is stored already in public repositories such as Wikipedia, so one additional question is how to employ these connections the most effective way.
 
 In many endangered language communities, the pool of active and prominent speakers is small.
@@ -379,7 +385,7 @@ In these cases, one could also imagine a scenario in which the language document
 This is somewhat counterintuitive, but text is text, and if the match between phoneme representation in written and spoken varieties is close enough, which it often is with languages with new orthographies, the chances of this succeeding are high.
 
 Parallel texts also open up additional research possibilities.
-In the Fenno-Ugrica project, one of the main ideas has clearly been to collect resources that exist in several languages spoken in Russia.
+In the Fenno-Ugrica project in Helsinki, one of the main ideas has clearly been to collect resources that exist in several languages spoken in Russia.
 The result is that there are now publications such as Four Battles, which are translated to nine different Uralic languages.
 A cursory Google search reveals that translations must exist also in various Turkic languages.
 When the books are compared, the texts reveal themselves to be immediately useful, since they share exactly the same structure, often almost on the sentence level with only small deviations.
