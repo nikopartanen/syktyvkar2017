@@ -47,6 +47,7 @@ The coverage of Unicode has been increasing continuously, but there are still a 
 However, it is clear that part of the content is in the structure of the text document, which means that simply retrieving the text is only one step. -->
 <!--In my opinion, it is still somewhat unclear what is the ideal format for storing this restructured data so that it is most useful for linguists and other researchers.-->
 There are already broader and more systematic comparisons of different OCR tools available; see, for example, Tafti et. al. [-@taftiEtAl2016a], but I aim to contribute to the discussion by pointing out certain particular needs of language documentation, which may be relevant for the wider linguistic community as well.
+Within the INEL project [@wagner-nagyEtAl2015a] we have done a wide-ranging evaluation of different tools currently available for tasks relevant for us, and despite our satisfactory results, one must also acknowledge the existence of several alarming bottlenecks, unsuitable technical combinations and dead ends within the existing workflows.
 
 <!--During the last years, t-->There have been multiple large digitalization projects run by both academic institutions and libraries<!--, often in cooperation with one another-->.
 Some of these, such as [Endangered Archives](http://eap.bl.uk/) (http://eap.bl.uk) run by the British Library, have focused mainly on audio and photographic media.
@@ -59,7 +60,7 @@ Also from this perspective, working primarily with data that can be released wit
 <!--Unfortunately, very few projects have adopted clear licenses for the data, with Fenno-Ugrica being a rare exception in that it has decided to use Public Domain.
 It is foreseeable that in the future this will be one of the questions that needs to be answered in relation to different uses of data.-->
 
-In the INEL project, we have been working with the digitalization of Selkup, Dolgan and Kamas materials.
+In the INEL, we have been working with the digitalization of Selkup, Dolgan and Kamas materials.
 <!--In contrast to the projects mentioned earlier, --> Our focus has been primarily on published fieldwork materials and other representations of spoken primary data for these languages.
 <!--Since INEL is a long-term project, the workflows and conventions established now will be extended further into work on new languages later.-->
 <!-- At later stages of the project, Komi-Permyak and Komi-Yazva will also be included.-->
@@ -68,15 +69,15 @@ With smaller languages, it is likely that the recorded and transcribed materials
 The texts we work with in INEL tend to fall into two distinct categories: handwritten manuscripts and published printed transcriptions.
 This data is also unusually complex because the transcriptions are usually related to various archival audio recordings, but the relation may not be entirely transparent.
 <!-- A colleague in INEL technical team, Daniel Jettka, is currently implementing a graph database as a solution for storing interlinked data, and this looks like a good solution for the complicated data model inherent to our data. -->
-For example, in the case of some Selkup transcriptions, the recordings available are apparently different versions from those on which the existing transcriptions are based.
+For example, in the case of some Selkup transcriptions, the recordings available are different versions from those on which the existing transcriptions are based.
 <!-- At the same time,--> The same transcriptions may have been published in several publications in somewhat different versions and using various transcription conventions.
 The same recordings may be stored in different formats and copies in various archives.
 <!-- All of these factors bring an additional layer of complexity to the metadata associated with the primary data.-->
 
-The situation is similar when it comes to the digitalization of fieldwork materials on the majority of Uralic languages spoken in Russia.
+<!--The situation is similar when it comes to the digitalization of fieldwork materials on the majority of Uralic languages spoken in Russia.-->
 This is also a very particular case for OCR tools, since the scripts used are often not included in available OCR models, the number of diacritics (possible added by hand) can make the scripts extremely complex, and the fonts used may be highly customized<!-- to suit specific publications-->.
 <!--Indeed, the variation between publications is often so high that it is necessary to question how much effort should be put into OCR development if the specific variety is used only for few pages in one publication.-->
-<!--It seems that in many ways, -->The OCR challenges related to printed transcriptions could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, especially concerning the volume of the texts<!-- (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum)-->.
+<!--It seems that in many ways, -->The OCR challenges <!--related to printed transcriptions -->could be very comparable to the OCR of printed early modern manuscripts, although there are also clear differences, especially concerning the volume of the texts<!-- (transcriptions tend to be relatively small collections in the end, with maybe 300 pages in one publication at maximum)-->.
 <!-- In many cases--> The copyright questions also get very complex when it comes to legacy materials, since the rights of the speakers, original researchers, archives and publishers may all interact in many ways, and may be next to impossible to reconstruct.
 That said, it seems we are still far away even from solving the copyright issues involved with a very simple set of data, so the question should not be made overly complicated at this point.
 
@@ -85,14 +86,13 @@ Since handwritten text recognition is still an actively developing field, the ch
 One good candidate to take into consideration is [Transkribus](https://transkribus.eu)(https://transkribus.eu), developed in Innsbruck, Austria, but it is very likely that other solutions will still emerge.
 Here, too, it must be taken into account that the distinction between handwritten and printed is possibly less relevant than the distinction between combining and distinct characters.-->
 
-# The basics of OCR workflow
+# OCR workflow
 
 Most of the time, the first step after digitalization is to find some solutions for performing OCR on the text.
-To take this further, there are several tasks which must be undertaken before the data is actually ready to be used by a general audience or by researchers.
-It seems to me that many of these tasks have not been commonly discussed, which is why I wish to present some of my thoughts on the topic in this paper.
-As far as I see, providing the data itself is just one part in getting the data into wider use in the research community.
+<!--To take this further, there are several tasks which must be undertaken before the data is ready to be used by a general audience or by researchers.-->
+<!--It seems to me that many of these tasks have not been commonly discussed, which is why I wish to present some of my thoughts on the topic in this paper.-->
+<!--As far as I see, providing the data itself is just one part in getting the data into wider use in the research community.-->
 <!-- Although not new research in a strict sense, this paper aims to introduce several concepts to the discussion concerning how OCR tools are evaluated and chosen.-->
-Within the INEL project [@wagner-nagyEtAl2015a] we have done a wide-ranging evaluation of different tools currently available for tasks relevant for us, and despite our satisfactory results, one must also acknowledge the existence of several alarming bottlenecks, unsuitable technical combinations and dead ends within the existing workflows.
 
 <!--Moreover, it must be recognized that mere OCR of the text is often not enough in order to provide materials ready for linguistic analysis, as further restructuring is necessary.
  Often it adds value to automatically extract more information than just the text, as many documents contain systematic information about the author, location and time, among many other metadata variables.
@@ -101,11 +101,10 @@ Information about the position and layout of characters, lines and words on page
 As a more technical note, the recognition confidence for individual characters could also be very useful for further post-processing.
 The significance of this naturally increases with languages that have a less mature OCR environment.
 This paper identifies various problems and, as far as possible, offers alternatives are offered and solutions envisioned. -->
-
 Although we can often rely on command line tools, there are tasks for which a graphical user interface is particularly suitable.
-As mentioned, one of these is the post-processing of OCR results.
-Another is manual correction of the detected text regions, since their correct definition is necessary for succesful OCR.
-Both of these tasks in almost all cases require a visual comparison between the recognized text and the original image.
+<!--As mentioned, o-->One of these is the post-processing of OCR results.
+Another is manual correction of the detected text regions<!--, since their correct definition is necessary for succesful OCR-->.
+Both of these tasks <!--in almost all cases -->require a visual comparison between the recognized text and the original image.
 There are plenty of different tools that offer the possibility of manually correcting OCR'd text, and virtually all of these have very similar user interfaces.
 The page image is on the left, the text field on the right, and moving the cursor around the text field has some kind of correspondence on top of the image.
 This poses the question of so many projects have ended up deciding to develop new tools for post-correction.
@@ -117,15 +116,17 @@ Compared to this, the initial training of an OCR model is very well suited to a 
 
 # Current solutions
 
-## The recurring problems
+<!--
 
+## The recurring problems
+-->
 <!-- Although there are several tools, many of them still tend to lack some features,--> The most critical commonly lacking features are:
 
 - Lack of find and replace with regular expressions [@mancinelli2016a, 259]
 - Lack of good XML export
 
-The first issue is connected to the automatization of the proofreading process, since some mistakes are always systematic and could be easily corrected before the manual phase.
-The export format is more serious issue, as it is connected to post-processing and reuse.
+The first issue is connected to the automatization of the proofreading process, since some mistakes are always systematic<!-- and could be easily corrected before the manual phase-->.
+The export format is more serious issue<!--, as it is connected to post-processing and reuse-->.
 The following attributes would ideally be present in the output format:
 
 - Recognized word (or character)
@@ -186,7 +187,7 @@ This is eventually imported into FLEx, with line, chapter and page information b
 This workflow disregards the page position information, which is suboptimal in every sense<!--, but for now there has not been a better alternative-->.
 The solution selected in INEL works for the careful digitalization of individual texts one by one, but would not be satisfactory for use on large scale digitalization projects.
 
-## The basics of OCR model training
+## OCR model training
 
 OCR model training can be carried out at different levels, and the programs tested, Abbyy and Tesseract, employ opposite strategies.
 This is a matter of the level on which the recognition is being performed.
@@ -227,12 +228,12 @@ This is probably not an unusual problem, and the installation is indeed possible
 -->
 
 Contrary to the Tesseract/OCRicola model, Abbyy takes care of most of the above-mentioned tasks by itself without user interference.
-This can be seen as both a blessing and a curse, since it also makes the model development entirely non-transparent.
-It is possible to use another Cyrillic model, such as Russian, as a backbone and build upon that by adding the special characters needed for other languages.
-The new characters can be added and those which are not needed removed, and Abbyy has a well functioning tool for manually assigning different character forms to the model as representative of a specific character.
+This <!--can be seen as both a blessing and a curse, since it -->also makes the model development <!--entirely -->non-transparent.
+It is possible to use another Cyrillic model<!--, such as Russian,--> as a backbone and build upon that by adding the special characters needed for other languages.
+<!--The new characters can be added and those which are not needed removed, and Abbyy has a well functioning tool for manually assigning different character forms to the model as representative of a specific character.-->
 This makes Abbyy model training very broad and general, and allows even arbitrary matching between characters and recognized forms, which is a great benefit when compared to Tesseract/OCRicola, which demands that the trained character also be present in the font.
 
-It is also possible to add dictionary data to the Abbyy model.
+<!--It is also possible to add dictionary data to the Abbyy model.-->
 <!--This is something we have not tested, but which larger languages are clearly using in their models.-->
 Indeed, recognition of languages such as English, Russian and German is almost flawless.
 In the same vein, it must be stated that even with new languages Abbyy often reaches very good results with a relatively small investment in the training.
@@ -248,19 +249,18 @@ For this reason, the Fenno-Ugrica collection also contains better versions in pl
 -->
 
 I have often encountered the idea that page position information is not necessary.
-However, there are several situations where this information is very critical.
+<!--However, t-->There are several situations where this information is very critical.
 For example, different page elements such as page numbers are very easy to recognize from the layout when their position is known<!--, but tend to get very messily mixed in with rest of the content when the position information is lost-->.
-The same goes for paragraph information, since a paragraph is basically a structure in text that is closely related to the organization of line indent, which, when known, makes paragraph detection rather reliable.
-Detecting it reliably from unstructured lines is, on the other hand, rather hopeless.
+The same goes for paragraph information, since <!--a paragraph is basically a structure in text that is closely related to the organization of--> line indent coordinates<!--, which,-->, when known, make paragraph detection rather reliable.
+Detecting it from unstructured lines is, on the other hand, rather hopeless.
 
-It can be argued that there are special cases where this information can be disregarded.
-For example, when working with texts like the Bible or Koran, the original verse structure is usually enough to distinguish different elements, and in many instances the sameness of the text in each version is very highly enforced.
+It can be argued that there are cases where this information can be disregarded.
+When working with texts like the Bible or Koran, the original verse structure is enough to distinguish different elements<!--, and in many instances the sameness of the text in each version is very highly enforced-->.
 Some texts <!--resulting from OCR, for example elicited sentences or structured questionnaires, -->follow essentially the same model where each utterance can be identified as a part of a closed set.
-Some data encountered in INEL is also like this, such as the translated sentence lists collected from many different languages in Siberia.
+Some data <!--encountered -->in INEL is also like this, such as the translated sentence lists collected from many different languages in Siberia.
 <!--When it comes to these sentences, the number and the information indicating that they belong to this specific set are enough to identify them reliably.-->
-
-Thereby OCR can be seen as a means to get the text, but not so much as a method for fully digitalizing an entire individual book or manuscript.
-Only later post-processing can turn the text into research data.
+<!--Thereby OCR can be seen as a means to get the text, but not so much as a method for fully digitalizing an entire individual book or manuscript.
+Only later post-processing can turn the text into research data.-->
 The rarer and more susceptible to subjective reading and interpretation the text is, more valuable it is to be able to reproduce the original text or to easily match the recognized words to positions on the page.
 <!--In this sense, OCR is ultimately just an attempt to claim that on these pixels, or on these coordinates on the original page, we have representations of these specific characters.-->
 Especially with old typefaces or handwritten manuscripts, the matter of interpretation tends to become more significant.
@@ -400,9 +400,9 @@ The result is that there are now publications which are translated to many Urali
 <!--A cursory search reveals that translations must exist also in various Turkic languages.-->
 When the books are compared, the texts are immediately useful, since they share exactly the same structure, often on the sentence level with only small deviations.
 <!-- Extracting parallel sentences can be done using customary command line tools (Perl, sed) and, for example, hunalign, which automatically detects matching sentences and outputs a format that can be used in further processing. -->
-However, aligning the sentences is currently somewhat time consuming and more elaborate workflows are desperately needed.
+<!--However, aligning the sentences is currently somewhat time consuming and more elaborate workflows are desperately needed.
 That said, matching the sentences semi-automatically is rewarding and fast enough that doing it manually for individual books is entirely feasible.
-Recently also a corpus of movie subtitles has been compiled ([ParTy](http://www.natalialevshina.com/corpus.html) (http://www.natalialevshina.com/corpus.html) by Natalia Levshina), but since that data comes with matching timecodes, the task of alignment is very different.
+Recently also a corpus of movie subtitles has been compiled ([ParTy](http://www.natalialevshina.com/corpus.html) (http://www.natalialevshina.com/corpus.html) by Natalia Levshina), but since that data comes with matching timecodes, the task of alignment is very different.-->
 
 There are also resources that are parallel in less obvious ways.
 There are historical events that have been covered in every newspaper in the Soviet Union and beyond.
@@ -416,6 +416,7 @@ It is still unknown how exactly this data can be used, but as far as I see, ther
 
 # Closing words
 
+<!--
 The usability of different workflows related to OCR and the reuse of materials is closely connected to copyright.
 From my perspective, the best and clearest solution is to have as much data as possible in Public Domain.
 Even the use of different academic licenses is very problematic, since they do not correspond cleanly with commonly used open licenses, and it is unclear if they allow, for example, further derivations.
@@ -423,7 +424,7 @@ As far as I can see, the majority of more interesting uses would include creatin
 Only an open enough license guarantees that the data can be used in any possible way we can or will be able to imagine in the future.
 The use of Public Domain is often related to the age of the data.
 This is why many large text corpora exist now for pre-1920s data.
-There are exceptions, such as the texts released into Public Domain by Ivan Belykh, and such actions should be encouraged further.
+There are exceptions, such as the texts released into Public Domain by Ivan Belykh, and such actions should be encouraged further.-->
 
 It is easy to talk about the differences in the data different projects deal with and produce, but there is a lot that is essentially the same in all OCR workflows.
 These similarities mean that most of the practices and solutions that work in one place will also work elsewhere.
