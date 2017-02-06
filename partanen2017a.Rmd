@@ -10,7 +10,7 @@ output:
     latex_engine: xelatex
     toc: no
 bibliography: bibliography.bib
-csl: evolutionary-anthropology.csl
+csl: academic-questions.csl
 ---
 
 ```{r setup, include=FALSE}
