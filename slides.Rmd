@@ -1,6 +1,6 @@
 ---
 title: "Challenges in OCR today"
-subtitle: "Experiences from INEL"
+subtitle: "Report on experiences from INEL"
 author: "Niko Partanen"
 date: "3/16/2017"
 output: 
