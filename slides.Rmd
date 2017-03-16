@@ -197,8 +197,9 @@ knitr::include_graphics("images/abbyy_overview.png")
 </br></br>
 <center>CC-BY -- Niko Partanen / INEL -- 2017</center>
 </br></br>
-<center>More information and publication [here](https://github.com/nikopartanen/syktyvkar2017).</center>
-
+<center>More information and publication:</center>
+</br>
+<center>https://github.com/nikopartanen/syktyvkar2017</center>
 <!--
 ---
 
