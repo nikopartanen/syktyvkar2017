@@ -2,7 +2,7 @@
 title: "Challenges in OCR today"
 subtitle: "Report on experiences from INEL"
 author: "Niko Partanen"
-date: "3/16/2017"
+date: "17/3/2017"
 output: 
     ioslides_presentation:
         logo: images/logo_black.png
