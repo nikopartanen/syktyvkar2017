@@ -170,9 +170,11 @@ knitr::include_graphics("images/abbyy_overview.png")
 
 - No chances to deal with more complex layout in the document
 - Hard to make nice ebooks automatically!
-    - Ebooks with broken paragraph structure nasty to read
+    - Ebooks with broken paragraph structure annoying to read
 - Hard to make nice digital facsimiles!
     - Relevant for older and rarer items
+
+- Unnecessary information loss is never desirable!
 
 ## Future tasks
 
