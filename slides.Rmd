@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Grammars, corpora and language technologies for Indigenous Northern Eurasian Languages ([website](https://inel.corpora.uni-hamburg.de/))
 - A long-term project (18 years) funded by Academy of Sciences and Humanities in Hamburg
-- The project was applied for by Prof. Dr. Beáta Wagner-Nagy, Dr. Michael Riessler and the management of HZSK
+- The project was applied for by Prof. Dr. Beáta Wagner-Nagy, Dr. Michael Rießler and the management of HZSK
 - Research:
     - Institut für Finnougristik / Uralistik at Universität Hamburg (IFUU)
 - Infrastructure:
