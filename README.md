@@ -10,4 +10,4 @@ CC-BY, Niko Partanen / INEL, 2017
 
 ## Cite
 
-Coming soon!
+Niko Partanen 2017 Challenges in OCR today. Report on experiences from INEL. Electronic Writing of RF Peoples: History, Issues, and Perspectives. March 16–17, 2017, Syktyvkar
